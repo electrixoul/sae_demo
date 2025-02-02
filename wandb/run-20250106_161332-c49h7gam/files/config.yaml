@@ -1,0 +1,59 @@
+wandb_version: 1
+
+experiment:
+  desc: null
+  value: sae_3d_visualization
+run_id:
+  desc: null
+  value: fwo5yx3w
+hyperparameters:
+  desc: null
+  value:
+    num_saes: 2
+    input_size: 256
+    hidden_size: 512
+    k_sparse: 32
+    learning_rate: 0.01
+    batch_size: 2048
+    num_epochs: 1
+    weight_decay: 0.01
+visualization:
+  desc: null
+  value:
+    plot_title: ''
+    x_label: Max Cosine Similarity with True Features
+    y_label: Max Cosine Similarity between SAEs
+    z_label: Reconstruction Importance
+_wandb:
+  desc: null
+  value:
+    python_version: 3.11.11
+    cli_version: 0.16.6
+    framework: huggingface
+    huggingface_version: 4.40.1
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1736151212.0
+    t:
+      1:
+      - 1
+      - 11
+      - 49
+      - 51
+      - 55
+      2:
+      - 1
+      - 11
+      - 49
+      - 51
+      - 55
+      3:
+      - 2
+      - 16
+      - 23
+      4: 3.11.11
+      5: 0.16.6
+      6: 4.40.1
+      8:
+      - 5
+      13: linux-x86_64

@@ -1,0 +1,19 @@
+experiment: sae_3d_visualization
+run_id: fwo5yx3w
+
+hyperparameters:
+  hidden_size: 512
+  k_sparse: 6
+  num_saes: 5
+  learning_rate: 0.001
+  num_epochs: 10
+  weight_decay: 0.01
+  ensemble_consistency_weight: 0
+  training_batch_size: 1024
+  segment_length_sec: 1.0
+  lowcut: 0.5
+  highcut: 45.0
+  filter_order: 5
+
+data:
+  eeg_data_url: "https://isip.piconepress.com/projects/nedc/data/tuh_eeg/tuh_eeg/v2.0.1/edf/150/aaaaawfy/"

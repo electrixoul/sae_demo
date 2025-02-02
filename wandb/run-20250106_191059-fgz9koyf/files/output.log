@@ -1,0 +1,12 @@
+/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/torch/cuda/__init__.py:118: UserWarning: CUDA initialization: The NVIDIA driver on your system is too old (found version 11070). Please update your GPU driver by downloading and installing a new version from the URL: http://www.nvidia.com/Download/index.aspx Alternatively, go to: https://pytorch.org to install a PyTorch version that has been compiled with your version of the CUDA driver. (Triggered internally at ../c10/cuda/CUDAFunctions.cpp:108.)
+  return torch._C._cuda_getDeviceCount() > 0
+Traceback (most recent call last):
+  File "/home/t/workspace/AGI/THBI/mutual-feature-regularization/main.py", line 47, in run_experiment
+    eeg_task.run(device, config)
+  File "/home/t/workspace/AGI/THBI/mutual-feature-regularization/experiments/eeg_task.py", line 18, in run
+    os.environ['EEG_USERNAME'],
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 679, in __getitem__
+KeyError: 'EEG_USERNAME'
+Running EEG Experiment...
+An error occurred: 'EEG_USERNAME'

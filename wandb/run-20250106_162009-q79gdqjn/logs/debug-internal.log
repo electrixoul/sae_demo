@@ -1,0 +1,19 @@
+2025-01-06 16:20:09,472 INFO    StreamThr :70723 [internal.py:wandb_internal():86] W&B internal server running at pid: 70723, started at: 2025-01-06 16:20:09.471522
+2025-01-06 16:20:09,474 DEBUG   HandlerThread:70723 [handler.py:handle_request():146] handle_request: status
+2025-01-06 16:20:09,481 INFO    WriterThread:70723 [datastore.py:open_for_write():87] open: /home/t/workspace/AGI/THBI/mutual-feature-regularization/wandb/run-20250106_162009-q79gdqjn/run-q79gdqjn.wandb
+2025-01-06 16:20:09,481 DEBUG   SenderThread:70723 [sender.py:send():379] send: header
+2025-01-06 16:20:09,485 DEBUG   SenderThread:70723 [sender.py:send():379] send: run
+2025-01-06 16:20:10,165 DEBUG   HandlerThread:70723 [handler.py:handle_request():146] handle_request: shutdown
+2025-01-06 16:20:10,166 INFO    HandlerThread:70723 [handler.py:finish():866] shutting down handler
+2025-01-06 16:20:10,326 INFO    SenderThread:70723 [dir_watcher.py:__init__():211] watching files in: /home/t/workspace/AGI/THBI/mutual-feature-regularization/wandb/run-20250106_162009-q79gdqjn/files
+2025-01-06 16:20:10,327 INFO    SenderThread:70723 [sender.py:_start_run_threads():1124] run started: q79gdqjn with start time 1736151609.471637
+2025-01-06 16:20:10,327 INFO    SenderThread:70723 [sender.py:finish():1546] shutting down sender
+2025-01-06 16:20:10,327 INFO    SenderThread:70723 [dir_watcher.py:finish():358] shutting down directory watcher
+2025-01-06 16:20:10,485 INFO    WriterThread:70723 [datastore.py:close():296] close: /home/t/workspace/AGI/THBI/mutual-feature-regularization/wandb/run-20250106_162009-q79gdqjn/run-q79gdqjn.wandb
+2025-01-06 16:20:11,328 INFO    SenderThread:70723 [dir_watcher.py:finish():388] scan: /home/t/workspace/AGI/THBI/mutual-feature-regularization/wandb/run-20250106_162009-q79gdqjn/files
+2025-01-06 16:20:11,328 INFO    SenderThread:70723 [dir_watcher.py:finish():402] scan save: /home/t/workspace/AGI/THBI/mutual-feature-regularization/wandb/run-20250106_162009-q79gdqjn/files/config.yaml config.yaml
+2025-01-06 16:20:11,329 INFO    SenderThread:70723 [file_pusher.py:finish():172] shutting down file pusher
+2025-01-06 16:20:11,329 INFO    SenderThread:70723 [file_pusher.py:join():178] waiting for file pusher
+2025-01-06 16:20:12,614 INFO    wandb-upload_0:70723 [upload_job.py:push():131] Uploaded file /home/t/workspace/AGI/THBI/mutual-feature-regularization/wandb/run-20250106_162009-q79gdqjn/files/config.yaml
+2025-01-06 16:20:12,830 INFO    SenderThread:70723 [file_stream.py:finish():614] file stream finish called
+2025-01-06 16:20:13,450 INFO    SenderThread:70723 [file_stream.py:finish():618] file stream finish is done

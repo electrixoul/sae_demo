@@ -1,0 +1,131 @@
+{
+    "os": "Linux-5.11.0-40-generic-x86_64-with-glibc2.31",
+    "python": "3.11.11",
+    "heartbeatAt": "2025-01-06T08:42:57.766031",
+    "startedAt": "2025-01-06T08:42:56.129167",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--config",
+        "configs/eeg_load.yaml"
+    ],
+    "state": "running",
+    "program": "/home/t/workspace/AGI/THBI/mutual-feature-regularization/load_model.py",
+    "codePathLocal": "load_model.py",
+    "codePath": "load_model.py",
+    "git": {
+        "remote": "https://github.com/electrixoul/mutual-feature-regularization.git",
+        "commit": "e9ec6643985107e55b6d9b0b78f0aa58ffd878ad"
+    },
+    "email": "you@example.com",
+    "root": "/home/t/workspace/AGI/THBI/mutual-feature-regularization",
+    "host": "t-OptiPlex-7071",
+    "username": "t",
+    "executable": "/home/t/anaconda3/envs/sae/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 3448.4134375,
+        "min": 800.0,
+        "max": 5000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 1174.615,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 937.4047203063965,
+            "used": 828.0715713500977
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 2080 Ti",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 2080 Ti",
+            "memory_total": 11811160064
+        }
+    ],
+    "memory": {
+        "total": 62.604034423828125
+    }
+}

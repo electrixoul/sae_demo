@@ -1,0 +1,43 @@
+2025-01-06 19:16:38,688 INFO    MainThread:75789 [wandb_setup.py:_flush():76] Current SDK version is 0.16.6
+2025-01-06 19:16:38,688 INFO    MainThread:75789 [wandb_setup.py:_flush():76] Configure stats pid to 75789
+2025-01-06 19:16:38,688 INFO    MainThread:75789 [wandb_setup.py:_flush():76] Loading settings from /home/t/.config/wandb/settings
+2025-01-06 19:16:38,688 INFO    MainThread:75789 [wandb_setup.py:_flush():76] Loading settings from /home/t/workspace/AGI/THBI/mutual-feature-regularization/wandb/settings
+2025-01-06 19:16:38,688 INFO    MainThread:75789 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'entity': 'electrixoul-tsinghua-university'}
+2025-01-06 19:16:38,688 INFO    MainThread:75789 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2025-01-06 19:16:38,688 INFO    MainThread:75789 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'load_model.py', 'program_abspath': '/home/t/workspace/AGI/THBI/mutual-feature-regularization/load_model.py', 'program': '/home/t/workspace/AGI/THBI/mutual-feature-regularization/load_model.py'}
+2025-01-06 19:16:38,688 INFO    MainThread:75789 [wandb_setup.py:_flush():76] Applying login settings: {}
+2025-01-06 19:16:38,688 INFO    MainThread:75789 [wandb_init.py:_log_setup():521] Logging user logs to /home/t/workspace/AGI/THBI/mutual-feature-regularization/wandb/run-20250106_191638-yv4xybri/logs/debug.log
+2025-01-06 19:16:38,688 INFO    MainThread:75789 [wandb_init.py:_log_setup():522] Logging internal logs to /home/t/workspace/AGI/THBI/mutual-feature-regularization/wandb/run-20250106_191638-yv4xybri/logs/debug-internal.log
+2025-01-06 19:16:38,688 INFO    MainThread:75789 [wandb_init.py:init():561] calling init triggers
+2025-01-06 19:16:38,688 INFO    MainThread:75789 [wandb_init.py:init():568] wandb.init called with sweep_config: {}
+config: {'experiment': 'sae_3d_visualization', 'run_id': 'fwo5yx3w', 'hyperparameters': {'hidden_size': 512, 'k_sparse': 6, 'num_saes': 5, 'learning_rate': 0.001, 'num_epochs': 10, 'weight_decay': 0.01, 'ensemble_consistency_weight': 0, 'training_batch_size': 1024, 'segment_length_sec': 1.0, 'lowcut': 0.5, 'highcut': 45.0, 'filter_order': 5, 'input_size': 8192}, 'data': {'eeg_data_url': 'https://isip.piconepress.com/projects/nedc/data/tuh_eeg/tuh_eeg/v2.0.1/edf/150/aaaaawfy/'}}
+2025-01-06 19:16:38,688 INFO    MainThread:75789 [wandb_init.py:init():611] starting backend
+2025-01-06 19:16:38,688 INFO    MainThread:75789 [wandb_init.py:init():615] setting up manager
+2025-01-06 19:16:38,690 INFO    MainThread:75789 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-01-06 19:16:38,690 INFO    MainThread:75789 [wandb_init.py:init():623] backend started and connected
+2025-01-06 19:16:38,695 INFO    MainThread:75789 [wandb_init.py:init():715] updated telemetry
+2025-01-06 19:16:38,697 INFO    MainThread:75789 [wandb_init.py:init():748] communicating run to backend with 90.0 second timeout
+2025-01-06 19:16:39,104 WARNING MainThread:75789 [wandb_init.py:init():1203] interrupted
+Traceback (most recent call last):
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 1181, in init
+    run = wi.init()
+          ^^^^^^^^^
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 751, in init
+    result = run_init_handle.wait(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/sdk/lib/mailbox.py", line 283, in wait
+    found, abandoned = self._slot._get_and_clear(timeout=wait_timeout)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/sdk/lib/mailbox.py", line 130, in _get_and_clear
+    if self._wait(timeout=timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/sdk/lib/mailbox.py", line 126, in _wait
+    return self._event.wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/threading.py", line 629, in wait
+    signaled = self._cond.wait(timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/threading.py", line 331, in wait
+    gotit = waiter.acquire(True, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

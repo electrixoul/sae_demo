@@ -1,0 +1,8 @@
+experiment: feature_correlation
+run_id: vj8izs70
+
+hyperparameters:
+  input_size: 256
+  hidden_size: 512
+  k_sparse: 32
+  num_saes: 2

@@ -1,0 +1,13 @@
+/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/torch/cuda/__init__.py:118: UserWarning: CUDA initialization: The NVIDIA driver on your system is too old (found version 11070). Please update your GPU driver by downloading and installing a new version from the URL: http://www.nvidia.com/Download/index.aspx Alternatively, go to: https://pytorch.org to install a PyTorch version that has been compiled with your version of the CUDA driver. (Triggered internally at ../c10/cuda/CUDAFunctions.cpp:108.)
+  return torch._C._cuda_getDeviceCount() > 0
+Traceback (most recent call last):
+  File "/home/t/workspace/AGI/THBI/mutual-feature-regularization/main.py", line 41, in run_experiment
+    sae_3d_visualization.run(device, config)
+  File "/home/t/workspace/AGI/THBI/mutual-feature-regularization/experiments/sae_3d_visualization.py", line 178, in run
+    true_features = load_true_features_from_run(specific_run, device).to(device).to(torch.float32)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/t/workspace/AGI/THBI/mutual-feature-regularization/utils/general_utils.py", line 94, in load_true_features_from_run
+    raise ValueError(f"No valid true_features artifact found in run {run.id}")
+ValueError: No valid true_features artifact found in run fwo5yx3w
+Running SAE 3D Visualization Experiment...
+An error occurred: No valid true_features artifact found in run fwo5yx3w

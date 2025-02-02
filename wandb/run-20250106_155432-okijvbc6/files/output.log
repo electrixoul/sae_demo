@@ -1,0 +1,39 @@
+Running SAE 3D Visualization Experiment...
+An error occurred: Could not find run <Run neuroevolution/synthetic_validation/fwo5yx3w (not found)>
+/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/torch/cuda/__init__.py:118: UserWarning: CUDA initialization: The NVIDIA driver on your system is too old (found version 11070). Please update your GPU driver by downloading and installing a new version from the URL: http://www.nvidia.com/Download/index.aspx Alternatively, go to: https://pytorch.org to install a PyTorch version that has been compiled with your version of the CUDA driver. (Triggered internally at ../c10/cuda/CUDAFunctions.cpp:108.)
+  return torch._C._cuda_getDeviceCount() > 0
+Traceback (most recent call last):
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/apis/normalize.py", line 41, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/apis/public/api.py", line 835, in run
+    self._runs[path] = public.Run(self.client, entity, project, run_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/apis/public/runs.py", line 226, in __init__
+    self.load(force=not _attrs)
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/apis/public/runs.py", line 330, in load
+    raise ValueError("Could not find run %s" % self)
+ValueError: Could not find run <Run neuroevolution/synthetic_validation/fwo5yx3w (not found)>
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/home/t/workspace/AGI/THBI/mutual-feature-regularization/main.py", line 41, in run_experiment
+    sae_3d_visualization.run(device, config)
+  File "/home/t/workspace/AGI/THBI/mutual-feature-regularization/experiments/sae_3d_visualization.py", line 177, in run
+    specific_run = load_specific_run(wandb.run.project, run_id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/t/workspace/AGI/THBI/mutual-feature-regularization/utils/general_utils.py", line 70, in load_specific_run
+    return api.run(f"{project}/{run_id}")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/apis/normalize.py", line 87, in wrapper
+    raise CommError(message, err).with_traceback(sys.exc_info()[2])
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/apis/normalize.py", line 41, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/apis/public/api.py", line 835, in run
+    self._runs[path] = public.Run(self.client, entity, project, run_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/apis/public/runs.py", line 226, in __init__
+    self.load(force=not _attrs)
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/apis/public/runs.py", line 330, in load
+    raise ValueError("Could not find run %s" % self)
+wandb.errors.CommError: Could not find run <Run neuroevolution/synthetic_validation/fwo5yx3w (not found)>
