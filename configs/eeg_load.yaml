@@ -1,5 +1,5 @@
 experiment: sae_3d_visualization
-run_id: fwo5yx3w
+run_id: dlj6xpsd
 
 hyperparameters:
   hidden_size: 512

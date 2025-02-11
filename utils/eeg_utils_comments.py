@@ -6,6 +6,8 @@ import torch
 from torch.utils.data import Dataset
 import subprocess
 from collections import Counter
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
 
 # 使用wget下载EEG数据
 # 从指定URL使用用户名和密码下载文件并保存到指定的输出目录
@@ -42,10 +44,12 @@ def load_edf_file(file_path):
     f = pyedflib.EdfReader(file_path)
     n = f.signals_in_file
     signal_labels = f.getSignalLabels()
+    print("signals_in_file = ", f.signals_in_file)
     signals = []
     sampling_rates = []
     for i in range(n):
         sig = f.readSignal(i)
+        # print("shape of sig = ", sig.shape)
         signals.append(sig)
         fs = f.getSampleFrequency(i)
         sampling_rates.append(fs)
@@ -161,6 +165,7 @@ def preprocess_and_save_data(root_dir, processed_data_file, segment_length_sec, 
     segments_list = []
     for file_idx, file_path in enumerate(edf_files):
         signals, _, fs = load_edf_file(file_path)  # 加载信号及其元数据
+        print("shape of signals = ", signals.shape)
         if fs != most_common_fs:  # 跳过采样率不匹配的文件
             print(f"Skipping file {file_path} due to different sampling rate ({fs} Hz).")
             continue
@@ -172,14 +177,38 @@ def preprocess_and_save_data(root_dir, processed_data_file, segment_length_sec, 
             continue
 
         filtered_signals = bandpass_filter(signals, lowcut, highcut, fs, filter_order)  # 应用带通滤波
+        # print("shape of filtered_signals = ", filtered_signals.shape)
         segments = segment_signal(filtered_signals, fs, segment_length_sec)  # 分段信号
+        print("shape of segments = ", np.array(segments).shape)
         normalized_segments = [normalize_segment(segment) for segment in segments]  # 标准化每个片段
         vectorized_segments = vectorize_segments(normalized_segments)  # 展平片段
+
+        print("shape of vectorized_segments = ", np.array(vectorized_segments).shape)
 
         segments_list.extend(vectorized_segments)
 
     segments_array = np.array(segments_list, dtype=np.float16)  # 转换为NumPy数组
     print(f"Processed data shape: {segments_array.shape}")
+
+    # 显示 segments_array 的内存大小,以 GiB 为单位
+    print(f"segments_array.nbytes = {segments_array.nbytes / 1024**3:.1f} GiB")
+
+    # # 从 segments_array 中随机选择 8192 个样本
+    # np.random.seed(0)
+    # random_indices = np.random.choice(segments_array.shape[0], size=8192, replace=False)
+    # segments_array_selected = segments_array[random_indices]
+    
+    # # 对 segments_array_selected 进行PCA
+    # pca = PCA()
+    # pca.fit(segments_array_selected)
+    # print("pca.explained_variance_ratio_ = ", pca.explained_variance_ratio_)
+    # segments_array_pca = pca.transform(segments_array_selected)
+
+    # # 将 segments_array_pca 的前三维绘制成散点图
+    # fig = plt.figure()
+    # ax = fig.add_subplot(111, projection='3d')
+    # ax.scatter(segments_array_pca[:, 0], segments_array_pca[:, 1], segments_array_pca[:, 2])
+    # plt.show()
 
     segments_tensor = torch.from_numpy(segments_array)  # 转换为PyTorch张量
     torch.save(segments_tensor, processed_data_file)  # 保存张量到文件

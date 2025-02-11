@@ -68,7 +68,7 @@ def main():
     args = parser.parse_args()
 
     config = load_config(args.config)
-    config['hyperparameters']['input_size'] = 8192
+    # config['hyperparameters']['input_size'] = 8192
 
     # init_wandb(config)
     device = get_device()
@@ -86,16 +86,16 @@ def main():
     model_path = os.path.join(artifact_dir, f"{specific_run.name}_epoch_1.pth")
     full_state_dict = torch.load(model_path, map_location=device)
 
-    # Create a single model with both encoders
-    model = SparseAutoencoder(config['hyperparameters'])
-    model.load_state_dict(full_state_dict)
-    model = model.to(device).to(torch.float32)
+    # # Create a single model with both encoders
+    # model = SparseAutoencoder(config['hyperparameters'])
+    # model.load_state_dict(full_state_dict)
+    # model = model.to(device).to(torch.float32)
 
-    # display model status
-    print(model)
-    # print the model parameters
-    for name, param in model.named_parameters():
-        print(name, param.shape)
+    # # display model status
+    # print(model)
+    # # print the model parameters
+    # for name, param in model.named_parameters():
+    #     print(name, param.shape)
 
     ''' load data
     '''

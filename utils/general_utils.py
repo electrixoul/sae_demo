@@ -67,7 +67,7 @@ def find_combinations(grid):
 
 def load_specific_run(project, run_id):
     api = wandb.Api()
-    return api.run(f"electrixoul-tsinghua-university/{project}/{run_id}")
+    return api.run(f"georgiapatrick1265-tsinghua-university/{project}/{run_id}")
 
 
 def load_sae(run, params, device, encoder_idx):
