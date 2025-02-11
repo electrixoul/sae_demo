@@ -1,2 +1,2 @@
 eeg_data/*
-processed_data.pt
+./processed_data.pt
