@@ -228,3 +228,57 @@ class EEGDataset(Dataset):
     def __getitem__(self, idx):
         segment = self.segments_tensor[idx]
         return (segment,)
+
+
+def preprocess_and_save_data2(root_dir, processed_data_file, segment_length_sec, lowcut, highcut, filter_order, most_common_fs):
+    edf_files = find_edf_files(root_dir)  # 查找所有.edf文件
+    n_channels = None
+    segments_list = []
+    for file_idx, file_path in enumerate(edf_files):
+        signals, _, fs = load_edf_file(file_path)  # 加载信号及其元数据
+        print("shape of signals = ", signals.shape)
+        if fs != most_common_fs:  # 跳过采样率不匹配的文件
+            print(f"Skipping file {file_path} due to different sampling rate ({fs} Hz).")
+            continue
+
+        if n_channels is None:
+            n_channels = signals.shape[0]
+        elif signals.shape[0] != n_channels:  # 跳过通道数不一致的文件
+            print(f"Skipping file {file_path} due to inconsistent number of channels.")
+            continue
+
+        filtered_signals = bandpass_filter(signals, lowcut, highcut, fs, filter_order)  # 应用带通滤波
+        # print("shape of filtered_signals = ", filtered_signals.shape)
+        segments = segment_signal(filtered_signals, fs, segment_length_sec)  # 分段信号
+        print("shape of segments = ", np.array(segments).shape)
+        normalized_segments = [normalize_segment(segment) for segment in segments]  # 标准化每个片段
+        vectorized_segments = vectorize_segments(normalized_segments)  # 展平片段
+
+        print("shape of vectorized_segments = ", np.array(vectorized_segments).shape)
+
+        segments_list.extend(vectorized_segments)
+
+    segments_array = np.array(segments_list, dtype=np.float16)  # 转换为NumPy数组
+    print(f"Processed data shape: {segments_array.shape}")
+
+    # 显示 segments_array 的内存大小,以 GiB 为单位
+    print(f"segments_array.nbytes = {segments_array.nbytes / 1024**3:.1f} GiB")
+
+    segments_tensor = torch.from_numpy(segments_array)  # 转换为PyTorch张量
+    torch.save(segments_tensor, processed_data_file)  # 保存张量到文件
+    return n_channels, segments_array.shape[1]
+
+# EEG数据集类，用于加载预处理后的EEG数据
+# 提供访问存储为PyTorch张量的EEG片段的接口
+class EEGDataset(Dataset):
+    def __init__(self, processed_data_file):
+        self.segments_tensor = torch.load(processed_data_file, map_location='cpu')  # 从文件加载张量
+        self.n_segments = self.segments_tensor.shape[0]
+        self.segment_shape = self.segments_tensor.shape[1:]
+
+    def __len__(self):
+        return self.n_segments
+
+    def __getitem__(self, idx):
+        segment = self.segments_tensor[idx]
+        return (segment,)

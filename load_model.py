@@ -68,34 +68,9 @@ def main():
     args = parser.parse_args()
 
     config = load_config(args.config)
-    # config['hyperparameters']['input_size'] = 8192
 
     # init_wandb(config)
     device = get_device()
-
-    ''' load model
-    '''
-    torch.set_default_dtype(torch.float32)
-    run_id = config['run_id']
-    print("run_id: ", run_id)
-    specific_run = load_specific_run('synthetic_validation', run_id)
-
-    # Load the full model state dict
-    model_artifact = next(art for art in specific_run.logged_artifacts() if art.type == 'model')
-    artifact_dir = model_artifact.download()
-    model_path = os.path.join(artifact_dir, f"{specific_run.name}_epoch_1.pth")
-    full_state_dict = torch.load(model_path, map_location=device)
-
-    # # Create a single model with both encoders
-    # model = SparseAutoencoder(config['hyperparameters'])
-    # model.load_state_dict(full_state_dict)
-    # model = model.to(device).to(torch.float32)
-
-    # # display model status
-    # print(model)
-    # # print the model parameters
-    # for name, param in model.named_parameters():
-    #     print(name, param.shape)
 
     ''' load data
     '''
@@ -124,7 +99,7 @@ def main():
     most_common_fs, _ = sampling_rate_counts.most_common(1)[0]
     print(f"Most common sampling rate across all files: {most_common_fs} Hz")
 
-    n_channels = eeg_utils_comments.preprocess_and_save_data(
+    n_channels, input_size = eeg_utils_comments.preprocess_and_save_data2(
         eeg_data_dir,
         processed_data_file,
         config['hyperparameters']['segment_length_sec'],
@@ -133,6 +108,36 @@ def main():
         config['hyperparameters']['filter_order'],
         most_common_fs
     )
+
+    print("n_channels, input_size : ", n_channels, input_size)
+
+
+    ''' load model
+    '''
+    torch.set_default_dtype(torch.float32)
+    run_id = config['run_id']
+    print("run_id: ", run_id)
+    specific_run = load_specific_run('synthetic_validation', run_id)
+
+    # Load the full model state dict
+    model_artifact = next(art for art in specific_run.logged_artifacts() if art.type == 'model')
+    artifact_dir = model_artifact.download()
+    model_path = os.path.join(artifact_dir, f"{specific_run.name}_epoch_1.pth")
+    print("model_path: ", model_path)
+    full_state_dict = torch.load(model_path, map_location=device)
+
+    config['hyperparameters']['input_size'] = 8192
+
+    # Create a single model with both encoders
+    model = SparseAutoencoder(config['hyperparameters'])
+    model.load_state_dict(full_state_dict)
+    model = model.to(device).to(torch.float32)
+
+    # display model status
+    print(model)
+    # print the model parameters
+    for name, param in model.named_parameters():
+        print(name, param.shape)
 
 
     
