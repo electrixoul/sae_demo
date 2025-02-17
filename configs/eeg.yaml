@@ -2,7 +2,7 @@ experiment: eeg
 
 hyperparameters:
   hidden_size: 1024
-  k_sparse: 6
+  k_sparse: 20
   num_saes: 5
   learning_rate: 0.001
   num_epochs: 10

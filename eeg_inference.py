@@ -102,7 +102,8 @@ def main():
     # artifact_dir = model_artifact.download()
     # model_path = os.path.join(artifact_dir, f"{specific_run.name}_epoch_1.pth")
     # model_path = "/home/t/workspace/AGI/THBI/sae_demo/artifacts/magic-surf-8_epoch_1:v0/magic-surf-8_epoch_1.pth"
-    model_path = "/home/t/workspace/AGI/THBI/sae_demo/artifacts/worthy-music-2_epoch_1:v0/worthy-music-2_epoch_1.pth"
+    # model_path = "/home/t/workspace/AGI/THBI/sae_demo/artifacts/worthy-music-2_epoch_1:v0/worthy-music-2_epoch_1.pth"
+    model_path = "/home/t/workspace/AGI/THBI/mutual-feature-regularization/artifacts/lively-durian-4_epoch_10.pth"
     print("model_path: ", model_path)
     full_state_dict = torch.load(model_path, map_location=device)
 
@@ -119,16 +120,19 @@ def main():
     for name, param in model.named_parameters():
         print(name, param.shape)
 
+    sae_id = 1
+
     for batch_num, (X_batch,) in enumerate(dataloader):
         print("shape of X_batch: ", X_batch.shape)
         X_batch = X_batch.to(device)
         # 打印 X_batch 中数据的具体类型，例如 torch.float32
         print("X_batch type: ", X_batch.dtype)
         outputs, activations = model.forward_with_encoded(X_batch)
-        print("shape of outputs: ", outputs[0].shape)
-        print("shape of activations: ", activations[0].shape)
+        print("shape of outputs: ", len(outputs))
+        print("shape of outputs[0]: ", outputs[sae_id].shape)
+        print("shape of activations: ", activations[sae_id].shape)
 
-        nn_fit = outputs[0].detach().cpu().numpy()[0]
+        nn_fit = outputs[sae_id].detach().cpu().numpy()[0]
         raw_data = X_batch[0].detach().cpu().numpy()
 
         # 计算 nn_fit 和 raw_data 之间的 pearson correlation
@@ -136,7 +140,7 @@ def main():
         print("pearson correlation: ", corr)
 
         # 将 outputs[0] 绘制成 plot
-        plt.plot(outputs[0].detach().cpu().numpy()[0])
+        plt.plot(outputs[sae_id].detach().cpu().numpy()[0])
         plt.plot(X_batch[0].detach().cpu().numpy())
         plt.show()
 
