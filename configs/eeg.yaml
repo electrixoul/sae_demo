@@ -8,7 +8,7 @@ hyperparameters:
   num_epochs: 10
   weight_decay: 0.01
   ensemble_consistency_weight: 0
-  training_batch_size: 1024
+  training_batch_size: 2048
   segment_length_sec: 1.0
   lowcut: 0.5
   highcut: 45.0
