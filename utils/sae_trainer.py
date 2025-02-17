@@ -113,6 +113,6 @@ class SAETrainer:
                     **(({f"MMCS_SAE_{i}": mmcs_i for i, mmcs_i in enumerate(mmcs)}) if self.true_features is not None else {})
                 })
 
-            self.save_model(epoch + 1)
-            if self.true_features is not None:
-                self.save_true_features()
+            # self.save_model(epoch + 1)
+            # if self.true_features is not None:
+            #     self.save_true_features()
