@@ -75,7 +75,7 @@ def main():
 
     dataloader = DataLoader(
         eeg_dataset,
-        batch_size=config['hyperparameters']['training_batch_size'],
+        batch_size=200,              # 定义每一批数据的大小
         shuffle=True,
         num_workers=0,
         pin_memory=True
@@ -107,13 +107,22 @@ def main():
     # Create a single model with both encoders
     model = SparseAutoencoder(config['hyperparameters'])
     model.load_state_dict(full_state_dict)
-    model = model.to(device).to(torch.float32)
+    # model = model.to(device).to(torch.float32)
 
     # display model status
     print(model)
     # print the model parameters
     for name, param in model.named_parameters():
         print(name, param.shape)
+
+    for batch_num, (X_batch,) in enumerate(dataloader):
+        print("shape of X_batch: ", X_batch.shape)
+        X_batch = X_batch.to(device)
+        # 打印 X_batch 中数据的具体类型，例如 torch.float32
+        print("X_batch type: ", X_batch.dtype)
+        outputs, activations = model.forward_with_encoded(X_batch)
+        print("shape of outputs: ", outputs[0].shape)
+        print("shape of activations: ", activations[0].shape)
 
 
     

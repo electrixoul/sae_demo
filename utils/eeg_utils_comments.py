@@ -258,13 +258,14 @@ def preprocess_and_save_data2(root_dir, processed_data_file, segment_length_sec,
 
         segments_list.extend(vectorized_segments)
 
-    segments_array = np.array(segments_list, dtype=np.float16)  # 转换为NumPy数组
+    segments_array = np.array(segments_list, dtype=np.float32)  # 转换为NumPy数组
     print(f"Processed data shape: {segments_array.shape}")
 
     # 显示 segments_array 的内存大小,以 GiB 为单位
     print(f"segments_array.nbytes = {segments_array.nbytes / 1024**3:.1f} GiB")
 
     segments_tensor = torch.from_numpy(segments_array)  # 转换为PyTorch张量
+    print("type of segments_tensor = ", segments_tensor.dtype)
     torch.save(segments_tensor, processed_data_file)  # 保存张量到文件
     return n_channels, segments_array.shape[1]
 
