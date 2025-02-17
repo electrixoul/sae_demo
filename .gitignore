@@ -1,3 +1,4 @@
 #
 eeg_data/*
+artifacts/*
 processed_data.pt
