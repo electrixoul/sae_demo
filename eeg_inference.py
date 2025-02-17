@@ -10,6 +10,8 @@ from utils.general_utils import calculate_MMCS, load_specific_run, load_true_fea
 from models.sae import SparseAutoencoder
 from utils import eeg_utils_comments
 from torch.utils.data import DataLoader
+import matplotlib.pyplot as plt
+from scipy.stats import pearsonr
 
 
 def load_config(config_path):
@@ -75,7 +77,7 @@ def main():
 
     dataloader = DataLoader(
         eeg_dataset,
-        batch_size=200,              # 定义每一批数据的大小
+        batch_size=1,              # 定义每一批数据的大小
         shuffle=True,
         num_workers=0,
         pin_memory=True
@@ -123,6 +125,20 @@ def main():
         outputs, activations = model.forward_with_encoded(X_batch)
         print("shape of outputs: ", outputs[0].shape)
         print("shape of activations: ", activations[0].shape)
+
+        # 将 outputs[0] 绘制成 plot
+        plt.plot(outputs[0].detach().cpu().numpy()[0])
+        plt.plot(X_batch[0].detach().cpu().numpy())
+        plt.show()
+
+        # print(X_batch[0].detach().cpu().numpy())
+
+        nn_fit = outputs[0].detach().cpu().numpy()[0]
+        raw_data = X_batch[0].detach().cpu().numpy()
+
+        # 计算 nn_fit 和 raw_data 之间的 pearson correlation
+        corr, _ = pearsonr(nn_fit, raw_data)
+        print("pearson correlation: ", corr)
 
 
     
