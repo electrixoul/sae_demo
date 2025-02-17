@@ -98,9 +98,11 @@ def main():
     specific_run = load_specific_run('synthetic_validation', run_id)
 
     # Load the full model state dict
-    model_artifact = next(art for art in specific_run.logged_artifacts() if art.type == 'model')
-    artifact_dir = model_artifact.download()
-    model_path = os.path.join(artifact_dir, f"{specific_run.name}_epoch_1.pth")
+    # model_artifact = next(art for art in specific_run.logged_artifacts() if art.type == 'model')
+    # artifact_dir = model_artifact.download()
+    # model_path = os.path.join(artifact_dir, f"{specific_run.name}_epoch_1.pth")
+    # model_path = "/home/t/workspace/AGI/THBI/sae_demo/artifacts/magic-surf-8_epoch_1:v0/magic-surf-8_epoch_1.pth"
+    model_path = "/home/t/workspace/AGI/THBI/sae_demo/artifacts/worthy-music-2_epoch_1:v0/worthy-music-2_epoch_1.pth"
     print("model_path: ", model_path)
     full_state_dict = torch.load(model_path, map_location=device)
 
@@ -126,19 +128,19 @@ def main():
         print("shape of outputs: ", outputs[0].shape)
         print("shape of activations: ", activations[0].shape)
 
-        # 将 outputs[0] 绘制成 plot
-        plt.plot(outputs[0].detach().cpu().numpy()[0])
-        plt.plot(X_batch[0].detach().cpu().numpy())
-        plt.show()
-
-        # print(X_batch[0].detach().cpu().numpy())
-
         nn_fit = outputs[0].detach().cpu().numpy()[0]
         raw_data = X_batch[0].detach().cpu().numpy()
 
         # 计算 nn_fit 和 raw_data 之间的 pearson correlation
         corr, _ = pearsonr(nn_fit, raw_data)
         print("pearson correlation: ", corr)
+
+        # 将 outputs[0] 绘制成 plot
+        plt.plot(outputs[0].detach().cpu().numpy()[0])
+        plt.plot(X_batch[0].detach().cpu().numpy())
+        plt.show()
+
+        # print(X_batch[0].detach().cpu().numpy())
 
 
     
