@@ -4,17 +4,12 @@ import yaml
 import wandb
 from config import get_device
 from experiments import eeg_task, synthetic_task, feature_correlation, sae_3d_visualization, gpt2_task
-from utils.data_utils import generate_synthetic_data
 import traceback
 import torch
-import torch.distributed as dist
 from utils.general_utils import calculate_MMCS, load_specific_run, load_true_features_from_run
-from utils.data_utils import generate_synthetic_data
-from config import get_device
 from models.sae import SparseAutoencoder
 from utils import eeg_utils_comments
-import pyedflib
-from collections import Counter
+from torch.utils.data import DataLoader
 
 
 def load_config(config_path):
@@ -74,43 +69,24 @@ def main():
 
     ''' load data
     '''
-    eeg_data_dir = "eeg_data"
     processed_data_file = "processed_data.pt"
-    os.makedirs(eeg_data_dir, exist_ok=True)
-    eeg_utils_comments.download_eeg_data(
-        config['data']['eeg_data_url'],
-        os.environ['EEG_USERNAME'],
-        os.environ['EEG_PASSWORD'],
-        eeg_data_dir
+
+    eeg_dataset = eeg_utils_comments.EEGDataset(processed_data_file)
+
+    dataloader = DataLoader(
+        eeg_dataset,
+        batch_size=config['hyperparameters']['training_batch_size'],
+        shuffle=True,
+        num_workers=0,
+        pin_memory=True
     )
 
-    edf_files = eeg_utils_comments.find_edf_files(eeg_data_dir)
-    sampling_rates = []
-    for file_path in edf_files:
-        f = pyedflib.EdfReader(file_path)
-        # print(file_path)
-        n = f.signals_in_file
-        for i in range(n):
-            fs = f.getSampleFrequency(i)
-            sampling_rates.append(fs)
-        f._close()
+    input_dim = eeg_dataset.segment_shape[0]
 
-    sampling_rate_counts = Counter(sampling_rates)
-    most_common_fs, _ = sampling_rate_counts.most_common(1)[0]
-    print(f"Most common sampling rate across all files: {most_common_fs} Hz")
+    config['hyperparameters']['input_size'] = input_dim
 
-    n_channels, input_size = eeg_utils_comments.preprocess_and_save_data2(
-        eeg_data_dir,
-        processed_data_file,
-        config['hyperparameters']['segment_length_sec'],
-        config['hyperparameters']['lowcut'],
-        config['hyperparameters']['highcut'],
-        config['hyperparameters']['filter_order'],
-        most_common_fs
-    )
-
-    print("n_channels, input_size : ", n_channels, input_size)
-
+    print("input_dim : ", input_dim)
+    
 
     ''' load model
     '''
@@ -126,7 +102,7 @@ def main():
     print("model_path: ", model_path)
     full_state_dict = torch.load(model_path, map_location=device)
 
-    config['hyperparameters']['input_size'] = input_size
+    config['hyperparameters']['input_size'] = input_dim
 
     # Create a single model with both encoders
     model = SparseAutoencoder(config['hyperparameters'])
