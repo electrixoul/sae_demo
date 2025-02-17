@@ -104,7 +104,8 @@ def main():
     # model_path = "/home/t/workspace/AGI/THBI/sae_demo/artifacts/magic-surf-8_epoch_1:v0/magic-surf-8_epoch_1.pth"
     # model_path = "/home/t/workspace/AGI/THBI/sae_demo/artifacts/worthy-music-2_epoch_1:v0/worthy-music-2_epoch_1.pth"
     # model_path = "/home/t/workspace/AGI/THBI/mutual-feature-regularization/artifacts/lively-durian-4_epoch_10.pth"
-    model_path = "/home/t/workspace/AGI/THBI/mutual-feature-regularization/artifacts/lucky-violet-5_epoch_10.pth"
+    # model_path = "/home/t/workspace/AGI/THBI/mutual-feature-regularization/artifacts/lucky-violet-5_epoch_10.pth"
+    model_path = "/home/t/workspace/AGI/THBI/mutual-feature-regularization/artifacts/peach-dream-8_epoch_7.pth"
     print("model_path: ", model_path)
     full_state_dict = torch.load(model_path, map_location=device)
 
