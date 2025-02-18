@@ -1,0 +1,29 @@
+2025-02-18 15:07:40,816 INFO    MainThread:10668 [wandb_setup.py:_flush():76] Current SDK version is 0.16.6
+2025-02-18 15:07:40,816 INFO    MainThread:10668 [wandb_setup.py:_flush():76] Configure stats pid to 10668
+2025-02-18 15:07:40,816 INFO    MainThread:10668 [wandb_setup.py:_flush():76] Loading settings from /home/t/.config/wandb/settings
+2025-02-18 15:07:40,816 INFO    MainThread:10668 [wandb_setup.py:_flush():76] Loading settings from /home/t/workspace/AGI/THBI/sae_demo/wandb/settings
+2025-02-18 15:07:40,816 INFO    MainThread:10668 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'entity': 'electrixoul-tsinghua-university'}
+2025-02-18 15:07:40,816 INFO    MainThread:10668 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2025-02-18 15:07:40,816 INFO    MainThread:10668 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'main.py', 'program_abspath': '/home/t/workspace/AGI/THBI/sae_demo/main.py', 'program': '/home/t/workspace/AGI/THBI/sae_demo/main.py'}
+2025-02-18 15:07:40,816 INFO    MainThread:10668 [wandb_setup.py:_flush():76] Applying login settings: {}
+2025-02-18 15:07:40,817 INFO    MainThread:10668 [wandb_init.py:_log_setup():521] Logging user logs to /home/t/workspace/AGI/THBI/sae_demo/wandb/run-20250218_150740-1h1m2o8n/logs/debug.log
+2025-02-18 15:07:40,817 INFO    MainThread:10668 [wandb_init.py:_log_setup():522] Logging internal logs to /home/t/workspace/AGI/THBI/sae_demo/wandb/run-20250218_150740-1h1m2o8n/logs/debug-internal.log
+2025-02-18 15:07:40,817 INFO    MainThread:10668 [wandb_init.py:init():561] calling init triggers
+2025-02-18 15:07:40,817 INFO    MainThread:10668 [wandb_init.py:init():568] wandb.init called with sweep_config: {}
+config: {'experiment': 'eeg', 'hyperparameters': {'hidden_size': 12288, 'k_sparse': 120, 'num_saes': 5, 'learning_rate': 0.001, 'num_epochs': 10, 'weight_decay': 0.01, 'ensemble_consistency_weight': 0, 'training_batch_size': 2048, 'segment_length_sec': 1.0, 'lowcut': 0.5, 'highcut': 45.0, 'filter_order': 5}, 'data': {'eeg_data_url': 'https://isip.piconepress.com/projects/nedc/data/tuh_eeg/tuh_eeg/v2.0.1/edf/150/aaaaawfy/'}}
+2025-02-18 15:07:40,817 INFO    MainThread:10668 [wandb_init.py:init():611] starting backend
+2025-02-18 15:07:40,817 INFO    MainThread:10668 [wandb_init.py:init():615] setting up manager
+2025-02-18 15:07:40,819 INFO    MainThread:10668 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-02-18 15:07:40,819 INFO    MainThread:10668 [wandb_init.py:init():623] backend started and connected
+2025-02-18 15:07:40,824 INFO    MainThread:10668 [wandb_init.py:init():715] updated telemetry
+2025-02-18 15:07:40,826 INFO    MainThread:10668 [wandb_init.py:init():748] communicating run to backend with 90.0 second timeout
+2025-02-18 15:07:41,904 ERROR   MainThread:10668 [wandb_init.py:init():774] encountered error: It appears that you do not have permission to access the requested resource. Please reach out to the project owner to grant you access. If you have the correct permissions, verify that there are no issues with your networking setup.(Error 403: Forbidden)
+2025-02-18 15:07:42,413 ERROR   MainThread:10668 [wandb_init.py:init():1199] It appears that you do not have permission to access the requested resource. Please reach out to the project owner to grant you access. If you have the correct permissions, verify that there are no issues with your networking setup.(Error 403: Forbidden)
+Traceback (most recent call last):
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 1181, in init
+    run = wi.init()
+          ^^^^^^^^^
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 780, in init
+    raise error
+wandb.errors.CommError: It appears that you do not have permission to access the requested resource. Please reach out to the project owner to grant you access. If you have the correct permissions, verify that there are no issues with your networking setup.(Error 403: Forbidden)
+2025-02-18 15:07:43,419 WARNING MsgRouterThr:10668 [router.py:message_loop():77] message_loop has been closed

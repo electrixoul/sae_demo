@@ -62,8 +62,10 @@ def run(device, config):
     )
 
     model = SparseAutoencoder(config['hyperparameters']).to(device)
-    trainer = SAETrainer(model, device, config['hyperparameters'])
+    trainer = SAETrainer(model, device, config['hyperparameters'], wandb_on=config['wandb_on'])
     trainer.train(dataloader, config['hyperparameters']['num_epochs'])
     trainer.save_model(config['hyperparameters']['num_epochs'])
-    wandb.log({"experiment_completed": True})
+
+    if config['wandb_on'] == '1':
+        wandb.log({"experiment_completed": True})
 

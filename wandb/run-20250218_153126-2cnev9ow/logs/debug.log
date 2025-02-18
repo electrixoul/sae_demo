@@ -1,0 +1,25 @@
+2025-02-18 15:31:26,814 INFO    MainThread:14125 [wandb_setup.py:_flush():68] Current SDK version is 0.19.6
+2025-02-18 15:31:26,814 INFO    MainThread:14125 [wandb_setup.py:_flush():68] Configure stats pid to 14125
+2025-02-18 15:31:26,815 INFO    MainThread:14125 [wandb_setup.py:_flush():68] Loading settings from /home/t/.config/wandb/settings
+2025-02-18 15:31:26,815 INFO    MainThread:14125 [wandb_setup.py:_flush():68] Loading settings from /home/t/workspace/AGI/THBI/sae_demo/wandb/settings
+2025-02-18 15:31:26,815 INFO    MainThread:14125 [wandb_setup.py:_flush():68] Loading settings from environment variables
+2025-02-18 15:31:26,815 INFO    MainThread:14125 [wandb_init.py:setup_run_log_directory():637] Logging user logs to /home/t/workspace/AGI/THBI/sae_demo/wandb/run-20250218_153126-2cnev9ow/logs/debug.log
+2025-02-18 15:31:26,815 INFO    MainThread:14125 [wandb_init.py:setup_run_log_directory():638] Logging internal logs to /home/t/workspace/AGI/THBI/sae_demo/wandb/run-20250218_153126-2cnev9ow/logs/debug-internal.log
+2025-02-18 15:31:26,815 INFO    MainThread:14125 [wandb_init.py:init():756] calling init triggers
+2025-02-18 15:31:26,816 INFO    MainThread:14125 [wandb_init.py:init():761] wandb.init called with sweep_config: {}
+config: {'experiment': 'eeg', 'hyperparameters': {'hidden_size': 12288, 'k_sparse': 120, 'num_saes': 5, 'learning_rate': 0.001, 'num_epochs': 10, 'weight_decay': 0.01, 'ensemble_consistency_weight': 0, 'training_batch_size': 2048, 'segment_length_sec': 1.0, 'lowcut': 0.5, 'highcut': 45.0, 'filter_order': 5}, 'data': {'eeg_data_url': 'https://isip.piconepress.com/projects/nedc/data/tuh_eeg/tuh_eeg/v2.0.1/edf/150/aaaaawfy/'}, '_wandb': {}}
+2025-02-18 15:31:26,816 INFO    MainThread:14125 [wandb_init.py:init():789] starting backend
+2025-02-18 15:31:27,026 INFO    MainThread:14125 [wandb_init.py:init():793] sending inform_init request
+2025-02-18 15:31:27,035 INFO    MainThread:14125 [backend.py:_multiprocessing_setup():97] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-02-18 15:31:27,036 INFO    MainThread:14125 [wandb_init.py:init():808] backend started and connected
+2025-02-18 15:31:27,039 INFO    MainThread:14125 [wandb_init.py:init():901] updated telemetry
+2025-02-18 15:31:27,051 INFO    MainThread:14125 [wandb_init.py:init():936] communicating run to backend with 90.0 second timeout
+2025-02-18 15:31:27,845 ERROR   MainThread:14125 [wandb_init.py:init():1481] error in wandb.init()
+Traceback (most recent call last):
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 1471, in init
+    return wi.init(run_settings, run_config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/t/anaconda3/envs/sae/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 967, in init
+    raise error
+wandb.errors.errors.CommError: failed to upsert bucket: returned error 403 Forbidden: {"errors":[{"message":"permission denied","path":["upsertBucket"],"extensions":{"code":"PERMISSION_ERROR"}}],"data":{"upsertBucket":null}}
+2025-02-18 15:31:27,854 WARNING MsgRouterThr:14125 [router.py:message_loop():75] message_loop has been closed

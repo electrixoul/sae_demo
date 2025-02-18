@@ -1,0 +1,17 @@
+{"time":"2025-02-18T15:24:11.183549717+08:00","level":"INFO","msg":"stream: starting","core version":"0.19.6","symlink path":"/home/t/workspace/AGI/THBI/sae_demo/wandb/run-20250218_152410-uyi814u6/logs/debug-core.log"}
+{"time":"2025-02-18T15:24:11.287085455+08:00","level":"INFO","msg":"created new stream","id":"uyi814u6"}
+{"time":"2025-02-18T15:24:11.287109587+08:00","level":"INFO","msg":"stream: started","id":"uyi814u6"}
+{"time":"2025-02-18T15:24:11.287123108+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"uyi814u6"}
+{"time":"2025-02-18T15:24:11.287157901+08:00","level":"INFO","msg":"sender: started","stream_id":"uyi814u6"}
+{"time":"2025-02-18T15:24:11.287179461+08:00","level":"INFO","msg":"handler: started","stream_id":"uyi814u6"}
+{"time":"2025-02-18T15:24:12.011569384+08:00","level":"ERROR","msg":"HTTP error","status":403,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-02-18T15:24:12.012037555+08:00","level":"ERROR","msg":"sender: upsertRun:","error":"failed to upsert bucket: returned error 403 Forbidden: {\"errors\":[{\"message\":\"permission denied\",\"path\":[\"upsertBucket\"],\"extensions\":{\"code\":\"PERMISSION_ERROR\"}}],\"data\":{\"upsertBucket\":null}}"}
+{"time":"2025-02-18T15:24:12.023457811+08:00","level":"INFO","msg":"stream: closing","id":"uyi814u6"}
+{"time":"2025-02-18T15:24:12.023499989+08:00","level":"ERROR","msg":"sender: upsertConfig: RunRecord is nil"}
+{"time":"2025-02-18T15:24:12.467938478+08:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-02-18T15:24:12.467978069+08:00","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: returned error 404 Not Found: {\"errors\":[{\"message\":\"run synthetic_validation/uyi814u6 not found during createRunFiles\",\"path\":[\"createRunFiles\"]}],\"data\":{\"createRunFiles\":null}}"}
+{"time":"2025-02-18T15:24:12.468252136+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-18T15:24:12.468275787+08:00","level":"INFO","msg":"handler: closed","stream_id":"uyi814u6"}
+{"time":"2025-02-18T15:24:12.468288555+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"uyi814u6"}
+{"time":"2025-02-18T15:24:12.468318632+08:00","level":"INFO","msg":"sender: closed","stream_id":"uyi814u6"}
+{"time":"2025-02-18T15:24:12.468334651+08:00","level":"INFO","msg":"stream: closed","id":"uyi814u6"}

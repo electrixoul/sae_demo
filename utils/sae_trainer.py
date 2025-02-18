@@ -10,7 +10,7 @@ from utils.general_utils import calculate_MMCS
 
 
 class SAETrainer:
-    def __init__(self, model: nn.Module, device: str, hyperparameters: Dict[str, Any], true_features: Optional[torch.Tensor] = None):
+    def __init__(self, model: nn.Module, device: str, hyperparameters: Dict[str, Any], true_features: Optional[torch.Tensor] = None, wandb_on: str = '0'):
         self.model = model
         self.device = device
         self.config = hyperparameters
@@ -24,6 +24,7 @@ class SAETrainer:
         self.use_amp = hyperparameters.get("use_amp", True)
         self.warmup_steps = hyperparameters.get("warmup_steps", 100)
         self.current_step = 0
+        self.wandb_on = wandb_on
 
     def get_warmup_factor(self) -> float:
         if self.current_step >= self.warmup_steps:
@@ -31,14 +32,16 @@ class SAETrainer:
         return 0.5 * (1 + math.cos(math.pi * (self.warmup_steps - self.current_step) / self.warmup_steps))
 
     def save_true_features(self):
-        artifact = wandb.Artifact(f"{wandb.run.name}_true_features", type="true_features")
-        with artifact.new_file("true_features.pt", mode="wb") as f:
-            torch.save(self.true_features.cpu(), f)
-        wandb.log_artifact(artifact)
+        if self.wandb_on == '1':
+            artifact = wandb.Artifact(f"{wandb.run.name}_true_features", type="true_features")
+            with artifact.new_file("true_features.pt", mode="wb") as f:
+                torch.save(self.true_features.cpu(), f)
+            wandb.log_artifact(artifact)
 
     def save_model(self, epoch: int):
-        run_name = f"{wandb.run.name}_epoch_{epoch}"
-        self.base_model.save_model(run_name, alias=f"epoch_{epoch}")
+        if self.wandb_on == '1':
+            run_name = f"{wandb.run.name}_epoch_{epoch}"
+            self.base_model.save_model(run_name, alias=f"epoch_{epoch}")
 
     def calculate_consensus_loss(self, encoder_weights: List[torch.Tensor]) -> torch.Tensor:
         pairs = itertools.combinations(encoder_weights, 2)
@@ -106,13 +109,15 @@ class SAETrainer:
                     with torch.no_grad():
                         mmcs = [calculate_MMCS(encoder.weight.t(), self.true_features, self.device)[0] for encoder in self.base_model.encoders]
 
-                wandb.log({
-                    "Consensus_loss": consensus_loss,
-                    **{f"SAE_{i}_reconstruction_loss": rec_loss.item() for i, rec_loss in enumerate(reconstruction_losses)},
-                    **{f"Feature_activity_SAE_{i}": scalar for i, scalar in enumerate(feature_activity)},
-                    **(({f"MMCS_SAE_{i}": mmcs_i for i, mmcs_i in enumerate(mmcs)}) if self.true_features is not None else {})
-                })
+                if self.wandb_on == '1':
+                    wandb.log({
+                        "Consensus_loss": consensus_loss,
+                        **{f"SAE_{i}_reconstruction_loss": rec_loss.item() for i, rec_loss in enumerate(reconstruction_losses)},
+                        **{f"Feature_activity_SAE_{i}": scalar for i, scalar in enumerate(feature_activity)},
+                        **(({f"MMCS_SAE_{i}": mmcs_i for i, mmcs_i in enumerate(mmcs)}) if self.true_features is not None else {})
+                    })
 
-            # self.save_model(epoch + 1)
-            # if self.true_features is not None:
-            #     self.save_true_features()
+            if self.wandb_on == '1':
+                self.save_model(epoch + 1)
+                if self.true_features is not None:
+                    self.save_true_features()

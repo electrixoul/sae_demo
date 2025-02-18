@@ -8,6 +8,7 @@ import traceback
 import torch
 import torch.distributed as dist
 
+wandb_on = '0'
 
 def load_config(config_path):
     if config_path:
@@ -23,11 +24,16 @@ def init_wandb(config):
         'project': 'synthetic_validation',
         'config': config
     }
-    wandb.init(**default_config)
+    wandb.init(**default_config)        #project="image"
 
 
 def run_experiment(config):
-    init_wandb(config)
+
+    print("wandb_on: ", config['wandb_on'])
+
+    if config['wandb_on'] == '1':
+        init_wandb(config)
+
     device = get_device()
     try:
         if config['experiment'] == 'synthetic':
@@ -51,20 +57,29 @@ def run_experiment(config):
         print(f"An error occurred: {str(e)}")
         traceback.print_exc()
     finally:
-        wandb.finish()
+        if config['wandb_on'] == '1':
+            wandb.finish()
 
 
 def main():
     parser = argparse.ArgumentParser(description='Run experiments or generate datasets')
     parser.add_argument('--config', type=str, help='Path to the configuration file for experiments or dataset generation')
+    parser.add_argument('--wandb', type=str)
     args = parser.parse_args()
+
+    # set global wandb_on to 1 if wandb is on
+    global wandb_on
+    wandb_on = args.wandb
     
     if args.config:
         config = load_config(args.config)
+        # 向 config 中添加 wandb_on 字段和内容
+        config['wandb_on'] = wandb_on
         run_experiment(config)
     else:
         print("Error: No configuration file specified. Please provide a configuration file using --config.")
 
 
 if __name__ == '__main__':
+
     main()

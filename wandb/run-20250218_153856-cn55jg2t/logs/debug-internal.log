@@ -1,0 +1,17 @@
+{"time":"2025-02-18T15:38:56.817732562+08:00","level":"INFO","msg":"stream: starting","core version":"0.19.6","symlink path":"/home/t/workspace/AGI/THBI/sae_demo/wandb/run-20250218_153856-cn55jg2t/logs/debug-core.log"}
+{"time":"2025-02-18T15:38:56.923343128+08:00","level":"INFO","msg":"created new stream","id":"cn55jg2t"}
+{"time":"2025-02-18T15:38:56.923429169+08:00","level":"INFO","msg":"stream: started","id":"cn55jg2t"}
+{"time":"2025-02-18T15:38:56.923508997+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"cn55jg2t"}
+{"time":"2025-02-18T15:38:56.923528744+08:00","level":"INFO","msg":"handler: started","stream_id":"cn55jg2t"}
+{"time":"2025-02-18T15:38:56.92361728+08:00","level":"INFO","msg":"sender: started","stream_id":"cn55jg2t"}
+{"time":"2025-02-18T15:38:57.747160424+08:00","level":"ERROR","msg":"HTTP error","status":403,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-02-18T15:38:57.747517989+08:00","level":"ERROR","msg":"sender: upsertRun:","error":"failed to upsert bucket: returned error 403 Forbidden: {\"errors\":[{\"message\":\"permission denied\",\"path\":[\"upsertBucket\"],\"extensions\":{\"code\":\"PERMISSION_ERROR\"}}],\"data\":{\"upsertBucket\":null}}"}
+{"time":"2025-02-18T15:38:57.751609209+08:00","level":"INFO","msg":"stream: closing","id":"cn55jg2t"}
+{"time":"2025-02-18T15:38:57.751864678+08:00","level":"ERROR","msg":"sender: upsertConfig: RunRecord is nil"}
+{"time":"2025-02-18T15:38:58.170311332+08:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-02-18T15:38:58.170421878+08:00","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: returned error 404 Not Found: {\"errors\":[{\"message\":\"run synthetic_validation/cn55jg2t not found during createRunFiles\",\"path\":[\"createRunFiles\"]}],\"data\":{\"createRunFiles\":null}}"}
+{"time":"2025-02-18T15:38:58.171281172+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-18T15:38:58.171386057+08:00","level":"INFO","msg":"handler: closed","stream_id":"cn55jg2t"}
+{"time":"2025-02-18T15:38:58.171442904+08:00","level":"INFO","msg":"sender: closed","stream_id":"cn55jg2t"}
+{"time":"2025-02-18T15:38:58.171430459+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"cn55jg2t"}
+{"time":"2025-02-18T15:38:58.171566708+08:00","level":"INFO","msg":"stream: closed","id":"cn55jg2t"}
