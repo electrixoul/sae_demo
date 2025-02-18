@@ -123,4 +123,4 @@ class SAETrainer:
             #     if self.true_features is not None:
             #         self.save_true_features()
             # else:
-            self.base_model.save_model_local(f"epoch_{epoch + 1}")
+            self.base_model.save_model_local(f"epoch_last")
