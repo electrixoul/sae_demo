@@ -1,5 +1,6 @@
 import os
 import argparse
+import sys
 import yaml
 import wandb
 from config import get_device
@@ -12,7 +13,17 @@ from utils import eeg_utils_comments
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
 from scipy.stats import pearsonr
+import numpy as np
+from sklearn.decomposition import PCA
 
+
+def progress_bar(current, total, barLength = 100):
+    percent = float(current) * 100 / total
+    arrow = '-' * int(percent/100 * barLength - 1) + '>'
+    spaces = ' ' * (barLength - len(arrow))
+
+    print('Progress: [%s%s] %d %%' % (arrow, spaces, percent), end='\r')
+    sys.stdout.flush()
 
 def load_config(config_path):
     if config_path:
@@ -124,30 +135,53 @@ def main():
 
     sae_id = 1
 
+    nn_activations = []
+
     for batch_num, (X_batch,) in enumerate(dataloader):
-        print("shape of X_batch: ", X_batch.shape)
+
+        progress_bar(batch_num, 3000)
+
+        # print("shape of X_batch: ", X_batch.shape)
         X_batch = X_batch.to(device)
         # 打印 X_batch 中数据的具体类型，例如 torch.float32
-        print("X_batch type: ", X_batch.dtype)
+        # print("X_batch type: ", X_batch.dtype)
         outputs, activations = model.forward_with_encoded(X_batch)
-        print("shape of outputs: ", len(outputs))
-        print("shape of outputs[0]: ", outputs[sae_id].shape)
-        print("shape of activations: ", activations[sae_id].shape)
+        # print("shape of outputs: ", len(outputs))
+        # print("shape of outputs[0]: ", outputs[sae_id].shape)
+        # print("shape of activations: ", activations[sae_id].shape)
 
         nn_fit = outputs[sae_id].detach().cpu().numpy()[0]
         raw_data = X_batch[0].detach().cpu().numpy()
 
-        # 计算 nn_fit 和 raw_data 之间的 pearson correlation
-        corr, _ = pearsonr(nn_fit, raw_data)
-        print("pearson correlation: ", corr)
+        # # 计算 nn_fit 和 raw_data 之间的 pearson correlation
+        # corr, _ = pearsonr(nn_fit, raw_data)
+        # print("pearson correlation: ", corr)
 
-        # 将 outputs[0] 绘制成 plot
-        plt.plot(outputs[sae_id].detach().cpu().numpy()[0])
-        plt.plot(X_batch[0].detach().cpu().numpy())
-        plt.show()
+        # # 将 outputs[0] 绘制成 plot
+        # plt.plot(outputs[sae_id].detach().cpu().numpy()[0])
+        # plt.plot(X_batch[0].detach().cpu().numpy())
+        # plt.show()
 
-        # print(X_batch[0].detach().cpu().numpy())
+        nn_activations.append(np.array(activations[sae_id].detach().cpu().numpy()[0]))
 
+        if batch_num >= 3000:
+            break
+
+    nn_activations = np.array(nn_activations)
+    print("shape of nn_fit_results: ", nn_activations.shape)
+
+    # 对 nn_activations 进行 PCA
+    pca = PCA()
+    pca.fit(nn_activations)
+    # print("explained_variance_ratio_: ", pca.explained_variance_ratio_)
+    nn_activations_pca = pca.transform(nn_activations)
+
+    # 绘制 PCA 结果到3D视图中
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    # ax.scatter(nn_activations_pca[:, 0], nn_activations_pca[:, 1], nn_activations_pca[:, 2])
+    ax.scatter(nn_activations_pca[:, 3], nn_activations_pca[:, 4], nn_activations_pca[:, 5])
+    plt.show()
 
     
 if __name__ == '__main__':
