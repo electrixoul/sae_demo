@@ -118,9 +118,9 @@ class SAETrainer:
                         **(({f"MMCS_SAE_{i}": mmcs_i for i, mmcs_i in enumerate(mmcs)}) if self.true_features is not None else {})
                     })
 
-            if self.wandb_on == '1':
-                self.save_model(epoch + 1)
-                if self.true_features is not None:
-                    self.save_true_features()
-            else:
-                self.base_model.save_model_local(f"epoch_{epoch + 1}")
+            # if self.wandb_on == '1':
+            #     self.save_model(epoch + 1)
+            #     if self.true_features is not None:
+            #         self.save_true_features()
+            # else:
+            self.base_model.save_model_local(f"epoch_{epoch + 1}")
