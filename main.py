@@ -35,6 +35,7 @@ def run_experiment(config):
         init_wandb(config)
 
     device = get_device()
+    print("training is running on device: ", device)
     try:
         if config['experiment'] == 'synthetic':
             print("Running Synthetic Experiment...")

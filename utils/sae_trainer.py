@@ -74,6 +74,7 @@ class SAETrainer:
 
     def train(self, train_loader: DataLoader, num_epochs: int = 1):
         for epoch in range(num_epochs):
+            print("self.device: ", self.device)
             for batch_num, (X_batch,) in enumerate(train_loader):
                 self.current_step += 1
                 X_batch = X_batch.to(self.device)
