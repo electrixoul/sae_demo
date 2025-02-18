@@ -49,6 +49,12 @@ class SparseAutoencoder(nn.Module):
         wandb.log_artifact(artifact, aliases=[alias])
         os.remove(tmp_file.name)
 
+    def save_model_local(self, run_name: str, alias: str="latest"):
+        with tempfile.NamedTemporaryFile(mode='wb', delete=False, suffix='.pth') as tmp_file:
+            torch.save(self.state_dict(), tmp_file.name)
+            print(f"Model saved to {tmp_file.name}")
+        os.rename(tmp_file.name, f"{run_name}.pth")
+
     @classmethod
     def load_from_pretrained(cls, artifact_path: str, hyperparameters, device="cpu"):
         with wandb.init() as run:
