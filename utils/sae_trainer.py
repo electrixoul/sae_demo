@@ -100,6 +100,8 @@ class SAETrainer:
 
                 total_losses = [rec_loss + consensus_loss for rec_loss in reconstruction_losses]
 
+                print("consensus_loss: ", consensus_loss)
+
                 for i, (optimizer, scaler, total_loss) in enumerate(zip(self.optimizers, self.scalers, total_losses)):
                     optimizer.zero_grad()
                     scaler.scale(total_loss).backward(retain_graph=(i < len(self.optimizers) - 1))
