@@ -116,7 +116,8 @@ def main():
     # model_path = "/home/t/workspace/AGI/THBI/sae_demo/artifacts/worthy-music-2_epoch_1:v0/worthy-music-2_epoch_1.pth"
     # model_path = "/home/t/workspace/AGI/THBI/mutual-feature-regularization/artifacts/lively-durian-4_epoch_10.pth"
     # model_path = "/home/t/workspace/AGI/THBI/mutual-feature-regularization/artifacts/lucky-violet-5_epoch_10.pth"
-    model_path = "/home/t/workspace/AGI/THBI/mutual-feature-regularization/artifacts/peach-dream-8_epoch_7.pth"
+    # model_path = "/home/t/workspace/AGI/THBI/mutual-feature-regularization/artifacts/peach-dream-8_epoch_7.pth"
+    model_path = "/home/t/workspace/AGI/THBI/mutual-feature-regularization/artifacts/epoch_last_12288.pth"
     print("model_path: ", model_path)
     full_state_dict = torch.load(model_path, map_location=device)
 
@@ -153,35 +154,41 @@ def main():
         nn_fit = outputs[sae_id].detach().cpu().numpy()[0]
         raw_data = X_batch[0].detach().cpu().numpy()
 
-        # # 计算 nn_fit 和 raw_data 之间的 pearson correlation
-        # corr, _ = pearsonr(nn_fit, raw_data)
-        # print("pearson correlation: ", corr)
+        # 计算 nn_fit 和 raw_data 之间的 pearson correlation
+        corr, _ = pearsonr(nn_fit, raw_data)
+        print("pearson correlation: ", corr)
 
-        # # 将 outputs[0] 绘制成 plot
-        # plt.plot(outputs[sae_id].detach().cpu().numpy()[0])
-        # plt.plot(X_batch[0].detach().cpu().numpy())
-        # plt.show()
+        # 将 outputs[0] 绘制成 plot
+        plt.plot(outputs[sae_id].detach().cpu().numpy()[0])
+        plt.plot(X_batch[0].detach().cpu().numpy())
+        # 将 corr 作为标题
+        plt.title(f"pearson correlation: {corr}")
+        plt.show()
 
         nn_activations.append(np.array(activations[sae_id].detach().cpu().numpy()[0]))
 
         if batch_num >= 3000:
             break
 
-    nn_activations = np.array(nn_activations)
-    print("shape of nn_fit_results: ", nn_activations.shape)
+    # nn_activations = np.array(nn_activations)
+    # print("shape of nn_fit_results: ", nn_activations.shape)
 
-    # 对 nn_activations 进行 PCA
-    pca = PCA()
-    pca.fit(nn_activations)
-    # print("explained_variance_ratio_: ", pca.explained_variance_ratio_)
-    nn_activations_pca = pca.transform(nn_activations)
+    # # 对 nn_activations 进行 PCA
+    # pca = PCA()
+    # pca.fit(nn_activations)
+    # # print("explained_variance_ratio_: ", pca.explained_variance_ratio_)
+    # nn_activations_pca = pca.transform(nn_activations)
 
-    # 绘制 PCA 结果到3D视图中
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
+    # # 绘制 PCA 结果到3D视图中
+    # fig = plt.figure()
+    # ax = fig.add_subplot(111, projection='3d')
     # ax.scatter(nn_activations_pca[:, 0], nn_activations_pca[:, 1], nn_activations_pca[:, 2])
-    ax.scatter(nn_activations_pca[:, 3], nn_activations_pca[:, 4], nn_activations_pca[:, 5])
-    plt.show()
+    # plt.show()
+
+    # fig = plt.figure()
+    # ax = fig.add_subplot(111, projection='3d')
+    # ax.scatter(nn_activations_pca[:, 3], nn_activations_pca[:, 4], nn_activations_pca[:, 5])
+    # plt.show()
 
     
 if __name__ == '__main__':

@@ -31,15 +31,16 @@ class SparseAutoencoder(nn.Module):
         return [r[0] for r in results], [r[1] for r in results]
 
     def _process_layer(self, encoder: nn.Linear, x: torch.Tensor, encoder_idx: int) -> Tuple[torch.Tensor, torch.Tensor]:
-        encoded: torch.Tensor = self._topk_activation(encoder(x), encoder_idx)
+        encoded, indices = self._topk_activation(encoder(x), encoder_idx)
         normalized_weights: torch.Tensor = F.normalize(encoder.weight, p=2, dim=1)
         decoded: torch.Tensor = F.linear(encoded, normalized_weights.t())
+        print(indices)
         return decoded, encoded
 
     def _topk_activation(self, x: torch.Tensor, encoder_idx: int) -> torch.Tensor:
         k: int = self.k_sparse_values[encoder_idx]
-        top_values, _ = torch.topk(x, k, dim=1)
-        return x * (x >= top_values[:, -1:])
+        top_values, indices = torch.topk(x, k, dim=1)
+        return x * (x >= top_values[:, -1:]), indices
 
     def save_model(self, run_name: str, alias: str="latest"):
         artifact = wandb.Artifact(run_name, type='model')

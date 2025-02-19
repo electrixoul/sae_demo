@@ -2,8 +2,8 @@ experiment: sae_3d_visualization
 run_id: dlj6xpsd
 
 hyperparameters:
-  hidden_size: 2048
-  k_sparse: 30
+  hidden_size: 12288
+  k_sparse: 120
   num_saes: 5
   learning_rate: 0.001
   num_epochs: 10
