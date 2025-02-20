@@ -28,14 +28,14 @@ class SparseAutoencoder(nn.Module):
         x = x.to(next(self.parameters()).device)
         results = [self._process_layer(encoder, x, i) for i, encoder in enumerate(self.encoders)]
         # print("shape of results: ", len(results))
-        return [r[0] for r in results], [r[1] for r in results]
+        return [r[0] for r in results], [r[1] for r in results], [r[2] for r in results]
 
     def _process_layer(self, encoder: nn.Linear, x: torch.Tensor, encoder_idx: int) -> Tuple[torch.Tensor, torch.Tensor]:
         encoded, indices = self._topk_activation(encoder(x), encoder_idx)
         normalized_weights: torch.Tensor = F.normalize(encoder.weight, p=2, dim=1)
         decoded: torch.Tensor = F.linear(encoded, normalized_weights.t())
-        print(indices)
-        return decoded, encoded
+        # print(indices)
+        return decoded, encoded, indices
 
     def _topk_activation(self, x: torch.Tensor, encoder_idx: int) -> torch.Tensor:
         k: int = self.k_sparse_values[encoder_idx]

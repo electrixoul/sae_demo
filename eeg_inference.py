@@ -146,10 +146,12 @@ def main():
         X_batch = X_batch.to(device)
         # 打印 X_batch 中数据的具体类型，例如 torch.float32
         # print("X_batch type: ", X_batch.dtype)
-        outputs, activations = model.forward_with_encoded(X_batch)
+        outputs, activations, indices = model.forward_with_encoded(X_batch)
         # print("shape of outputs: ", len(outputs))
         # print("shape of outputs[0]: ", outputs[sae_id].shape)
         # print("shape of activations: ", activations[sae_id].shape)
+        indices = indices[sae_id].detach().cpu().numpy()[0]
+        # print(indices)
 
         nn_fit = outputs[sae_id].detach().cpu().numpy()[0]
         raw_data = X_batch[0].detach().cpu().numpy()
@@ -158,11 +160,36 @@ def main():
         corr, _ = pearsonr(nn_fit, raw_data)
         print("pearson correlation: ", corr)
 
-        # 将 outputs[0] 绘制成 plot
-        plt.plot(outputs[sae_id].detach().cpu().numpy()[0])
-        plt.plot(X_batch[0].detach().cpu().numpy())
-        # 将 corr 作为标题
-        plt.title(f"pearson correlation: {corr}")
+        # # 将 outputs[0] 绘制成 plot
+        # plt.plot(outputs[sae_id].detach().cpu().numpy()[0])
+        # plt.plot(X_batch[0].detach().cpu().numpy())
+        # # 将 corr 作为标题
+        # plt.title(f"pearson correlation: {corr}")
+        # plt.show()
+
+        # # 以高亮柱状图的形式绘制 indices，例如，绘制input_dim个灰色柱子，然后将 indices 对应的柱子绘制成红色
+        # plt.bar(indices, np.ones(len(indices)), color='red')
+        # plt.show()
+
+        # 创建一个 1 x activations[sae_id].shape[1] 的 RGB 图像，然后将 indices 的位置设置为红色，其他位置设置为灰色
+        img_indices = np.ones((1, activations[sae_id].shape[1], 3))
+
+        # 在 indices 的位置上，绘制一个宽度为5像素的红色条
+        wd = 10
+        # for idx in indices:
+        #     img_indices[0, idx-wd:idx+wd, 0] = 1
+        #     img_indices[0, idx-wd:idx+wd, 1] = 0
+        #     img_indices[0, idx-wd:idx+wd, 2] = 0
+
+        # 将 img_indices 垂直拉伸为 100 像素高度
+        img_indices = np.repeat(img_indices, 500, axis=0)
+
+        # 将上面两张图，绘制到同一个窗口中
+        fig, axs = plt.subplots(2)
+        axs[0].plot(outputs[sae_id].detach().cpu().numpy()[0])
+        axs[0].plot(X_batch[0].detach().cpu().numpy())
+        axs[0].set_title(f"pearson correlation: {corr}")
+        axs[1].imshow(img_indices)
         plt.show()
 
         nn_activations.append(np.array(activations[sae_id].detach().cpu().numpy()[0]))
