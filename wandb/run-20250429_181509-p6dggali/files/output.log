@@ -1,0 +1,18 @@
+wandb 运行已初始化:
+  实体: electrixoul-tsinghua-university
+  项目: demo-project
+  运行名称: template-demo
+  运行 URL: https://wandb.ai/electrixoul-tsinghua-university/demo-project/runs/p6dggali
+开始训练模拟...
+Epoch 1/10: train_loss=1.0000, train_acc=0.5000, val_loss=1.2000, val_acc=0.4000
+Epoch 2/10: train_loss=0.9470, train_acc=0.5500, val_loss=1.1580, val_acc=0.4400
+Epoch 3/10: train_loss=0.8880, train_acc=0.6000, val_loss=1.1120, val_acc=0.4800
+Epoch 4/10: train_loss=0.8230, train_acc=0.6500, val_loss=1.0620, val_acc=0.5200
+Epoch 5/10: train_loss=0.7520, train_acc=0.7000, val_loss=1.0080, val_acc=0.5600
+Epoch 6/10: train_loss=0.6750, train_acc=0.7500, val_loss=0.9500, val_acc=0.6000
+Epoch 7/10: train_loss=0.5920, train_acc=0.8000, val_loss=0.8880, val_acc=0.6400
+Epoch 8/10: train_loss=0.5030, train_acc=0.8500, val_loss=0.8220, val_acc=0.6800
+Epoch 9/10: train_loss=0.4080, train_acc=0.9000, val_loss=0.7520, val_acc=0.7200
+Epoch 10/10: train_loss=0.3070, train_acc=0.9500, val_loss=0.6780, val_acc=0.7600
+训练完成!
+运行数据可在以下位置查看: https://wandb.ai/electrixoul-tsinghua-university/demo-project/runs/p6dggali

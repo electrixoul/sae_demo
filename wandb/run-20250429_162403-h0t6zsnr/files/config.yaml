@@ -1,0 +1,31 @@
+wandb_version: 1
+
+test_type:
+  desc: null
+  value: connection_verification
+timestamp:
+  desc: null
+  value: 2025-04-29_16-24-02
+_wandb:
+  desc: null
+  value:
+    python_version: 3.10.16
+    cli_version: 0.16.6
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1745915043.0
+    t:
+      1:
+      - 55
+      2:
+      - 55
+      3:
+      - 2
+      - 13
+      - 16
+      - 23
+      4: 3.10.16
+      5: 0.16.6
+      8:
+      - 5
+      13: linux-x86_64

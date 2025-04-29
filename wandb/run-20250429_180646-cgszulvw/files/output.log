@@ -1,0 +1,7 @@
+Starting minimal test...
+Step 1/5: accuracy=0.5000, loss=0.5000
+Step 2/5: accuracy=0.6000, loss=0.4200
+Step 3/5: accuracy=0.7000, loss=0.3400
+Step 4/5: accuracy=0.8000, loss=0.2600
+Step 5/5: accuracy=0.9000, loss=0.1800
+Test complete!

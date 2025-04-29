@@ -1,0 +1,33 @@
+2025-04-29 18:13:32,722 INFO    MainThread:229592 [wandb_setup.py:_flush():76] Current SDK version is 0.16.6
+2025-04-29 18:13:32,722 INFO    MainThread:229592 [wandb_setup.py:_flush():76] Configure stats pid to 229592
+2025-04-29 18:13:32,722 INFO    MainThread:229592 [wandb_setup.py:_flush():76] Loading settings from /home/t/.config/wandb/settings
+2025-04-29 18:13:32,722 INFO    MainThread:229592 [wandb_setup.py:_flush():76] Loading settings from /home/t/workspace/lab_work/sae_demo/wandb/settings
+2025-04-29 18:13:32,722 INFO    MainThread:229592 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'api_key': '***REDACTED***', 'entity': 'electrixoul-tsinghua-university', 'console': 'off'}
+2025-04-29 18:13:32,722 INFO    MainThread:229592 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2025-04-29 18:13:32,722 INFO    MainThread:229592 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'wandb_tsinghua_test.py', 'program_abspath': '/home/t/workspace/lab_work/sae_demo/wandb_tsinghua_test.py', 'program': '/home/t/workspace/lab_work/sae_demo/wandb_tsinghua_test.py'}
+2025-04-29 18:13:32,722 INFO    MainThread:229592 [wandb_setup.py:_flush():76] Applying login settings: {}
+2025-04-29 18:13:32,722 INFO    MainThread:229592 [wandb_init.py:_log_setup():521] Logging user logs to /home/t/workspace/lab_work/sae_demo/wandb/run-20250429_181332-xyafdtyv/logs/debug.log
+2025-04-29 18:13:32,722 INFO    MainThread:229592 [wandb_init.py:_log_setup():522] Logging internal logs to /home/t/workspace/lab_work/sae_demo/wandb/run-20250429_181332-xyafdtyv/logs/debug-internal.log
+2025-04-29 18:13:32,722 INFO    MainThread:229592 [wandb_init.py:init():561] calling init triggers
+2025-04-29 18:13:32,722 INFO    MainThread:229592 [wandb_init.py:init():568] wandb.init called with sweep_config: {}
+config: {'test_type': 'tsinghua_account_test', 'timestamp': '2025-04-29_18-13-31'}
+2025-04-29 18:13:32,722 INFO    MainThread:229592 [wandb_init.py:init():611] starting backend
+2025-04-29 18:13:32,722 INFO    MainThread:229592 [wandb_init.py:init():615] setting up manager
+2025-04-29 18:13:32,724 INFO    MainThread:229592 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-04-29 18:13:32,725 INFO    MainThread:229592 [wandb_init.py:init():623] backend started and connected
+2025-04-29 18:13:32,729 INFO    MainThread:229592 [wandb_init.py:init():715] updated telemetry
+2025-04-29 18:13:32,731 INFO    MainThread:229592 [wandb_init.py:init():748] communicating run to backend with 90.0 second timeout
+2025-04-29 18:13:33,479 INFO    MainThread:229592 [wandb_run.py:_on_init():2357] communicating current version
+2025-04-29 18:13:33,872 INFO    MainThread:229592 [wandb_run.py:_on_init():2366] got version response upgrade_message: "wandb version 0.19.10 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2025-04-29 18:13:33,872 INFO    MainThread:229592 [wandb_init.py:init():799] starting run threads in backend
+2025-04-29 18:13:36,301 INFO    MainThread:229592 [wandb_run.py:_console_start():2335] atexit reg
+2025-04-29 18:13:36,301 INFO    MainThread:229592 [wandb_run.py:_redirect():2190] redirect: off
+2025-04-29 18:13:36,301 INFO    MainThread:229592 [wandb_init.py:init():842] run started, returning control to user process
+2025-04-29 18:13:37,813 INFO    MainThread:229592 [wandb_run.py:_finish():2064] finishing run electrixoul-tsinghua-university/tsinghua-test/xyafdtyv
+2025-04-29 18:13:37,813 INFO    MainThread:229592 [wandb_run.py:_atexit_cleanup():2304] got exitcode: 0
+2025-04-29 18:13:37,814 INFO    MainThread:229592 [wandb_run.py:_restore():2287] restore
+2025-04-29 18:13:37,814 INFO    MainThread:229592 [wandb_run.py:_restore():2293] restore done
+2025-04-29 18:13:46,064 INFO    MainThread:229592 [wandb_run.py:_footer_history_summary_info():3936] rendering history
+2025-04-29 18:13:46,064 INFO    MainThread:229592 [wandb_run.py:_footer_history_summary_info():3968] rendering summary
+2025-04-29 18:13:46,070 INFO    MainThread:229592 [wandb_run.py:_footer_sync_info():3895] logging synced files

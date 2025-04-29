@@ -1,0 +1,128 @@
+{
+    "os": "Linux-5.15.0-127-generic-x86_64-with-glibc2.31",
+    "python": "3.10.16",
+    "heartbeatAt": "2025-04-29T10:15:10.745823",
+    "startedAt": "2025-04-29T10:15:09.357813",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/t/workspace/lab_work/sae_demo/wandb_tsinghua_template.py",
+    "codePathLocal": "wandb_tsinghua_template.py",
+    "codePath": "wandb_tsinghua_template.py",
+    "git": {
+        "remote": "git@github.com:electrixoul/sae_demo.git",
+        "commit": "6f48f780a035208178e0b0f65e585ce1b67f4e0b"
+    },
+    "email": "electrixoul@outlook.com",
+    "root": "/home/t/workspace/lab_work/sae_demo",
+    "host": "t-OptiPlex-7080",
+    "username": "t",
+    "executable": "/home/t/anaconda3/envs/sae_eeg/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 2928.43825,
+        "min": 800.0,
+        "max": 4800.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 3672.552,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 800.0,
+            "max": 4800.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 467.8895797729492,
+            "used": 355.093563079834
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 2070 SUPER",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 2070 SUPER",
+            "memory_total": 8589934592
+        }
+    ],
+    "memory": {
+        "total": 31.056793212890625
+    }
+}

@@ -1,0 +1,41 @@
+wandb_version: 1
+
+model_type:
+  desc: null
+  value: demo
+learning_rate:
+  desc: null
+  value: 0.001
+batch_size:
+  desc: null
+  value: 32
+epochs:
+  desc: null
+  value: 10
+timestamp:
+  desc: null
+  value: 2025-04-29_18-15-07
+_wandb:
+  desc: null
+  value:
+    python_version: 3.10.16
+    cli_version: 0.16.6
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1745921709.0
+    t:
+      1:
+      - 55
+      2:
+      - 55
+      3:
+      - 2
+      - 13
+      - 16
+      - 23
+      - 62
+      4: 3.10.16
+      5: 0.16.6
+      8:
+      - 5
+      13: linux-x86_64
