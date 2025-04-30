@@ -1,0 +1,65 @@
+wandb 运行已初始化:
+  实体: electrixoul-tsinghua-university
+  项目: mnist-sae-training
+  运行名称: mnist-sae-train-k50
+  运行 URL: https://wandb.ai/electrixoul-tsinghua-university/mnist-sae-training/runs/1faaetzg
+加载MNIST数据集...
+
+
+
+
+
+
+
+
+
+
+
+
+100%|████████████████████████████████████████████████████████████████████████| 9.91M/9.91M [00:25<00:00, 393kB/s]
+100%|████████████████████████████████████████████████████████████████████████| 28.9k/28.9k [00:00<00:00, 110kB/s]
+
+
+
+100%|████████████████████████████████████████████████████████████████████████| 1.65M/1.65M [00:04<00:00, 350kB/s]
+MNIST训练集: 60000 样本
+MNIST测试集: 10000 样本
+100%|███████████████████████████████████████████████████████████████████████| 4.54k/4.54k [00:00<00:00, 5.49MB/s]
+Traceback (most recent call last):
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 288, in <module>
+    main()
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 207, in main
+    model = SparseAutoencoder(config).to(device)
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1355, in to
+    return self._apply(convert)
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 942, in _apply
+    param_applied = fn(param)
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1341, in convert
+    return t.to(
+RuntimeError: CUDA error: CUDA-capable device(s) is/are busy or unavailable
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+Traceback (most recent call last):
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 288, in <module>
+    main()
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 207, in main
+    model = SparseAutoencoder(config).to(device)
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1355, in to
+    return self._apply(convert)
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 942, in _apply
+    param_applied = fn(param)
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1341, in convert
+    return t.to(
+RuntimeError: CUDA error: CUDA-capable device(s) is/are busy or unavailable
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.

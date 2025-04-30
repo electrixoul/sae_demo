@@ -1,0 +1,44 @@
+wandb 运行已初始化:
+  实体: electrixoul-tsinghua-university
+  项目: mnist-sae-training
+  运行名称: mnist-sae-train-k50
+  运行 URL: https://wandb.ai/electrixoul-tsinghua-university/mnist-sae-training/runs/2eky56cs
+加载MNIST数据集...
+MNIST训练集: 60000 样本
+MNIST测试集: 10000 样本
+模型结构:
+SparseAutoencoder(
+  (encoders): ModuleList(
+    (0-4): 5 x Linear(in_features=784, out_features=1024, bias=True)
+  )
+)
+初始模型保存到: mnist_sae_models/mnist_sae_initial.pth
+开始训练SAE模型...
+轮次 1/5
+self.device:  cpu
+/home/t/workspace/lab_work/sae_demo/utils/sae_trainer.py:21: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self.scalers = [GradScaler() for _ in self.base_model.encoders]
+/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/amp/grad_scaler.py:136: UserWarning: torch.cuda.amp.GradScaler is enabled, but CUDA is not available.  Disabling.
+  warnings.warn(
+/home/t/workspace/lab_work/sae_demo/utils/sae_trainer.py:82: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast(enabled=self.use_amp):
+/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/amp/autocast_mode.py:266: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 306, in <module>
+    main()
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 245, in main
+    trainer.train(train_loader, 1)
+  File "/home/t/workspace/lab_work/sae_demo/utils/sae_trainer.py", line 83, in train
+    outputs, activations = self.base_model.forward_with_encoded(X_batch)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 306, in <module>
+    main()
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 245, in main
+    trainer.train(train_loader, 1)
+  File "/home/t/workspace/lab_work/sae_demo/utils/sae_trainer.py", line 83, in train
+    outputs, activations = self.base_model.forward_with_encoded(X_batch)
+ValueError: too many values to unpack (expected 2)

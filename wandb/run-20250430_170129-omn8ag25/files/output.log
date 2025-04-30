@@ -1,0 +1,168 @@
+wandb 运行已初始化:
+  实体: electrixoul-tsinghua-university
+  项目: mnist-sae-training
+  运行名称: mnist-sae-train-k50
+  运行 URL: https://wandb.ai/electrixoul-tsinghua-university/mnist-sae-training/runs/omn8ag25
+加载MNIST数据集...
+MNIST训练集: 60000 样本
+MNIST测试集: 10000 样本
+模型结构:
+SparseAutoencoder(
+  (encoders): ModuleList(
+    (0-4): 5 x Linear(in_features=784, out_features=1024, bias=True)
+  )
+)
+初始模型保存到: mnist_sae_models/mnist_sae_initial.pth
+分析初始重构损失...
+分析样本数量: 1280
+==== 初始重构损失分析 ====
+理论最小损失 (如果所有输入都重构为均值): 0.066663
+各SAE的初始重构损失:
+  SAE 0: 0.083025
+  SAE 1: 0.082090
+  SAE 2: 0.081561
+  SAE 3: 0.081602
+  SAE 4: 0.082713
+结论:
+1. 初始损失约为0.08是合理的，这与MNIST数据的方差和初始化方法有关
+2. 由于权重以正交方式初始化，初始重构已经比随机猜测要好
+3. 理论最小损失(均值重构)说明了数据的固有变异性
+4. 随着训练进行，损失会从初始值~0.08逐渐降低到更小的值
+开始训练SAE模型...
+轮次 1/5
+self.device:  cpu
+consensus_loss:  tensor(2.1921e-06, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(8.7650e-06, grad_fn=<MulBackward0>)
+/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+consensus_loss:  tensor(1.9706e-05, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(3.4997e-05, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(5.4613e-05, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(7.8531e-05, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0001, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0001, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0002, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0002, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0003, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0003, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0004, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0004, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0005, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0005, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0006, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0007, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0008, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0008, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0009, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0010, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0011, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0012, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0013, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0014, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0014, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0015, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0016, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0017, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0018, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0019, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0021, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0022, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0023, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0024, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0025, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0026, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0027, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0028, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0029, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0030, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0032, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0033, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0034, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0035, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0036, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0037, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0039, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0040, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0041, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0042, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0043, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0044, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0045, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0046, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0048, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0049, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0050, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0051, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0052, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0053, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0054, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0055, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0056, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0057, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0058, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0059, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0060, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0061, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0061, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0062, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0063, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0064, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0065, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0065, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0066, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0067, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0067, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0068, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0068, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0069, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0069, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0070, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0070, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0071, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0071, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0071, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0072, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0072, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0072, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0073, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0073, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0073, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0073, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0073, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0073, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0073, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0073, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0073, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0073, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0073, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0073, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0072, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0072, grad_fn=<MulBackward0>)
+Traceback (most recent call last):
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 390, in <module>
+    main()
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 329, in main
+    trainer.train(train_loader, 1)
+  File "/home/t/workspace/lab_work/sae_demo/custom_sae_trainer.py", line 131, in train
+    total_loss.backward(retain_graph=(i < len(self.optimizers) - 1))
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/_tensor.py", line 648, in backward
+    torch.autograd.backward(
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/autograd/__init__.py", line 353, in backward
+    _engine_run_backward(
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/autograd/graph.py", line 824, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 390, in <module>
+    main()
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 329, in main
+    trainer.train(train_loader, 1)
+  File "/home/t/workspace/lab_work/sae_demo/custom_sae_trainer.py", line 131, in train
+    total_loss.backward(retain_graph=(i < len(self.optimizers) - 1))
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/_tensor.py", line 648, in backward
+    torch.autograd.backward(
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/autograd/__init__.py", line 353, in backward
+    _engine_run_backward(
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/autograd/graph.py", line 824, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt

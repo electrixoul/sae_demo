@@ -1,0 +1,53 @@
+wandb 运行已初始化:
+  实体: electrixoul-tsinghua-university
+  项目: mnist-sae-training
+  运行名称: mnist-sae-train-k50
+  运行 URL: https://wandb.ai/electrixoul-tsinghua-university/mnist-sae-training/runs/1d9clspo
+加载MNIST数据集...
+MNIST训练集: 60000 样本
+MNIST测试集: 10000 样本
+模型结构:
+SparseAutoencoder(
+  (encoders): ModuleList(
+    (0-4): 5 x Linear(in_features=784, out_features=1024, bias=True)
+  )
+)
+初始模型保存到: mnist_sae_models/mnist_sae_initial.pth
+开始训练SAE模型...
+轮次 1/5
+self.device:  cpu
+consensus_loss:  tensor(2.1921e-06, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(8.7649e-06, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(1.9706e-05, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(3.4995e-05, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(5.4610e-05, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(7.8527e-05, grad_fn=<MulBackward0>)
+consensus_loss:  tensor(0.0001, grad_fn=<MulBackward0>)
+Traceback (most recent call last):
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 390, in <module>
+    main()
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 329, in main
+    trainer.train(train_loader, 1)
+  File "/home/t/workspace/lab_work/sae_demo/custom_sae_trainer.py", line 131, in train
+    total_loss.backward(retain_graph=(i < len(self.optimizers) - 1))
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/_tensor.py", line 648, in backward
+    torch.autograd.backward(
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/autograd/__init__.py", line 353, in backward
+    _engine_run_backward(
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/autograd/graph.py", line 824, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 390, in <module>
+    main()
+  File "/home/t/workspace/lab_work/sae_demo/mnist_sae_train.py", line 329, in main
+    trainer.train(train_loader, 1)
+  File "/home/t/workspace/lab_work/sae_demo/custom_sae_trainer.py", line 131, in train
+    total_loss.backward(retain_graph=(i < len(self.optimizers) - 1))
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/_tensor.py", line 648, in backward
+    torch.autograd.backward(
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/autograd/__init__.py", line 353, in backward
+    _engine_run_backward(
+  File "/home/t/anaconda3/envs/sae_eeg/lib/python3.10/site-packages/torch/autograd/graph.py", line 824, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
