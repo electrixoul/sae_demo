@@ -2,6 +2,53 @@ import torch
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import matplotlib as mpl
+from matplotlib.font_manager import fontManager
+
+# 设置支持中文的字体
+# 根据系统中可用的中文字体设置
+plt.rcParams['font.sans-serif'] = ['AR PL UKai CN', 'AR PL UMing CN', 'DejaVu Sans', 'sans-serif']
+plt.rcParams['axes.unicode_minus'] = False  # 正确显示负号
+print("中文字体设置为 AR PL UKai CN / AR PL UMing CN")
+
+# 定义英文标题版本，以备不支持中文显示
+titles_en = {
+    "MNIST图像表征可视化": "MNIST Image Representation Visualization",
+    "原始": "Original",
+    "标签": "Label",
+    "稀疏表征": "Sparse Representation",
+    "非零": "Non-zero",
+    "表征": "Representation",
+    "热力图": "Heatmap",
+    "重建图像": "Reconstructed Image",
+    "特征索引": "Feature Index",
+    "激活值": "Activation Value",
+    "特征激活频率": "Feature Activation Frequency",
+    "每个特征被激活的概率": "Probability of Each Feature Being Activated",
+    "特征平均激活强度": "Average Feature Activation Strength",
+    "不同数字的平均特征激活": "Average Feature Activation for Different Digits",
+    "数字": "Digit",
+    "平均激活值": "Average Activation Value",
+}
+
+# 确保中文标题能正确显示的函数
+def safe_title(zh_title, en_title=None):
+    """尝试使用中文标题，如果失败则使用英文标题"""
+    if en_title is None and zh_title in titles_en:
+        en_title = titles_en[zh_title]
+    
+    try:
+        # 测试中文显示
+        fig = plt.figure(figsize=(1, 1))
+        plt.title(zh_title)
+        plt.close(fig)
+        return zh_title
+    except:
+        if en_title:
+            return en_title
+        else:
+            # 如果没有英文替代，将中文转换为拼音或直接返回
+            return "Title"
 import argparse
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader, Dataset

@@ -2,6 +2,49 @@ import torch
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import matplotlib as mpl
+from matplotlib.font_manager import fontManager
+
+# 设置支持中文的字体
+# 根据系统中可用的中文字体设置
+plt.rcParams['font.sans-serif'] = ['AR PL UKai CN', 'AR PL UMing CN', 'DejaVu Sans', 'sans-serif']
+plt.rcParams['axes.unicode_minus'] = False  # 正确显示负号
+print("中文字体设置为 AR PL UKai CN / AR PL UMing CN")
+
+# 定义英文标题版本，以备不支持中文显示
+titles_en = {
+    "原始MNIST图像与SAE重建对比": "MNIST Original vs SAE Reconstruction",
+    "原始": "Original",
+    "重建": "Reconstruction",
+    "相关性": "Correlation",
+    "标签": "Label",
+    "SAE学习到的特征（前100个）": "SAE Learned Features (Top 100)",
+    "SAE训练过程中的重建质量变化": "SAE Reconstruction Quality During Training",
+    "重建相关系数": "Reconstruction Correlation",
+    "重建图像已保存到": "Reconstruction images saved to",
+    "特征可视化已保存到": "Feature visualization saved to",
+    "训练指标可视化已保存到": "Training metrics saved to",
+    "平均相关系数": "Average correlation",
+}
+
+# 确保中文标题能正确显示的函数
+def safe_title(zh_title, en_title=None):
+    """尝试使用中文标题，如果失败则使用英文标题"""
+    if en_title is None and zh_title in titles_en:
+        en_title = titles_en[zh_title]
+    
+    try:
+        # 测试中文显示
+        fig = plt.figure(figsize=(1, 1))
+        plt.title(zh_title)
+        plt.close(fig)
+        return zh_title
+    except:
+        if en_title:
+            return en_title
+        else:
+            # 如果没有英文替代，将中文转换为拼音或直接返回
+            return "Title"
 import argparse
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader, Dataset
