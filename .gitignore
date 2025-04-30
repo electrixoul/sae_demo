@@ -2,3 +2,4 @@
 eeg_data/*
 artifacts/*
 processed_data.pt
+eeg_data.zip
