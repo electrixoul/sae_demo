@@ -4,6 +4,7 @@ artifacts/*
 processed_data.pt
 eeg_data.zip
 data/MNIST/
+data/
 
 # 模型文件和目录
 *_models/
