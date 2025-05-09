@@ -5,6 +5,8 @@ processed_data.pt
 eeg_data.zip
 data/MNIST/
 data/
+output_images_jpg_rename/
+output_images_jpg_rename.zip
 
 # 模型文件和目录
 *_models/
