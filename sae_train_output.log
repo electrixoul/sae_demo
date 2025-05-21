@@ -1,0 +1,472 @@
+nohup: ignoring input
+ERROR conda.cli.main_run:execute(33): Subprocess for 'conda run ['python', 'images_sae_train.py', '--device', 'cuda', '--img_size', '64', '--batch_size', '32', '--k_sparse', '128']' command failed.  (See above for error)
+使用设备: cuda
+
+数据集信息:
+- 调整后图像尺寸: 64x64x3
+- 输入大小: 12288
+- 每个图像估计内存使用: 0.05 MB
+- 批量估计内存使用: 6.00 MB
+wandb 运行已初始化:
+  实体: electrixoul-tsinghua-university
+  项目: images-sae-training
+  运行名称: images-sae-train-k128
+  运行 URL: https://wandb.ai/electrixoul-tsinghua-university/images-sae-training/runs/v5kaqkae
+
+加载图像数据集...
+图像训练集: 约 8000 样本
+图像测试集: 约 2016 样本
+
+模型结构:
+ImageSparseAutoencoder(
+  (encoders): ModuleList(
+    (0-2): 3 x Linear(in_features=12288, out_features=3072, bias=True)
+  )
+)
+初始模型保存到: images_sae_models/images_sae_initial.pth
+
+开始训练SAE模型...
+
+轮次 1/10
+设备: cuda
+批次 0, 一致性损失: 0.000002, 重构损失: 0.231179
+批次 100, 一致性损失: 0.008884, 重构损失: 0.030583
+批次 200, 一致性损失: 0.008820, 重构损失: 0.024584
+完成轮次 1/1
+模型保存到: images_sae_models/images_sae_epoch_1.pth
+开始测试重构效果 (使用SAE 0)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.7437
+开始测试重构效果 (使用SAE 1)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.7426
+开始测试重构效果 (使用SAE 2)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.7401
+
+轮次 2/10
+设备: cuda
+批次 0, 一致性损失: 0.008793, 重构损失: 0.021559
+批次 100, 一致性损失: 0.008751, 重构损失: 0.022428
+批次 200, 一致性损失: 0.008705, 重构损失: 0.021132
+完成轮次 1/1
+模型保存到: images_sae_models/images_sae_epoch_2.pth
+开始测试重构效果 (使用SAE 0)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.7907
+开始测试重构效果 (使用SAE 1)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.7899
+开始测试重构效果 (使用SAE 2)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.7901
+
+轮次 3/10
+设备: cuda
+批次 0, 一致性损失: 0.008684, 重构损失: 0.017540
+批次 100, 一致性损失: 0.008668, 重构损失: 0.019224
+批次 200, 一致性损失: 0.008653, 重构损失: 0.019371
+完成轮次 1/1
+模型保存到: images_sae_models/images_sae_epoch_3.pth
+开始测试重构效果 (使用SAE 0)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8130
+开始测试重构效果 (使用SAE 1)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8116
+开始测试重构效果 (使用SAE 2)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8116
+
+轮次 4/10
+设备: cuda
+批次 0, 一致性损失: 0.008649, 重构损失: 0.016018
+批次 100, 一致性损失: 0.008644, 重构损失: 0.018186
+批次 200, 一致性损失: 0.008639, 重构损失: 0.019061
+完成轮次 1/1
+模型保存到: images_sae_models/images_sae_epoch_4.pth
+开始测试重构效果 (使用SAE 0)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8248
+开始测试重构效果 (使用SAE 1)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8232
+开始测试重构效果 (使用SAE 2)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8235
+
+轮次 5/10
+设备: cuda
+批次 0, 一致性损失: 0.008637, 重构损失: 0.015956
+批次 100, 一致性损失: 0.008634, 重构损失: 0.016930
+批次 200, 一致性损失: 0.008631, 重构损失: 0.015841
+完成轮次 1/1
+模型保存到: images_sae_models/images_sae_epoch_5.pth
+开始测试重构效果 (使用SAE 0)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8340
+开始测试重构效果 (使用SAE 1)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8320
+开始测试重构效果 (使用SAE 2)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8322
+
+轮次 6/10
+设备: cuda
+批次 0, 一致性损失: 0.008628, 重构损失: 0.016326
+批次 100, 一致性损失: 0.008626, 重构损失: 0.014717
+批次 200, 一致性损失: 0.008623, 重构损失: 0.015446
+完成轮次 1/1
+模型保存到: images_sae_models/images_sae_epoch_6.pth
+开始测试重构效果 (使用SAE 0)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8428
+开始测试重构效果 (使用SAE 1)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8427
+开始测试重构效果 (使用SAE 2)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8418
+
+轮次 7/10
+设备: cuda
+批次 0, 一致性损失: 0.008622, 重构损失: 0.015297
+批次 100, 一致性损失: 0.008620, 重构损失: 0.014295
+批次 200, 一致性损失: 0.008617, 重构损失: 0.015224
+完成轮次 1/1
+模型保存到: images_sae_models/images_sae_epoch_7.pth
+开始测试重构效果 (使用SAE 0)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8479
+开始测试重构效果 (使用SAE 1)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8489
+开始测试重构效果 (使用SAE 2)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8475
+
+轮次 8/10
+设备: cuda
+批次 0, 一致性损失: 0.008616, 重构损失: 0.013977
+批次 100, 一致性损失: 0.008612, 重构损失: 0.014130
+批次 200, 一致性损失: 0.008610, 重构损失: 0.012778
+完成轮次 1/1
+模型保存到: images_sae_models/images_sae_epoch_8.pth
+开始测试重构效果 (使用SAE 0)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8509
+开始测试重构效果 (使用SAE 1)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8534
+开始测试重构效果 (使用SAE 2)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8507
+
+轮次 9/10
+设备: cuda
+批次 0, 一致性损失: 0.008608, 重构损失: 0.014219
+批次 100, 一致性损失: 0.008605, 重构损失: 0.013440
+批次 200, 一致性损失: 0.008599, 重构损失: 0.013876
+完成轮次 1/1
+模型保存到: images_sae_models/images_sae_epoch_9.pth
+开始测试重构效果 (使用SAE 0)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8550
+开始测试重构效果 (使用SAE 1)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8568
+开始测试重构效果 (使用SAE 2)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8546
+
+轮次 10/10
+设备: cuda
+批次 0, 一致性损失: 0.008595, 重构损失: 0.013340
+批次 100, 一致性损失: 0.008588, 重构损失: 0.014209
+批次 200, 一致性损失: 0.008580, 重构损失: 0.014353
+完成轮次 1/1
+模型保存到: images_sae_models/images_sae_epoch_10.pth
+开始测试重构效果 (使用SAE 0)...
+已处理 32 个样本 (批次 0/50)
+已处理 352 个样本 (批次 10/50)
+已处理 672 个样本 (批次 20/50)
+已处理 992 个样本 (批次 30/50)
+已处理 1312 个样本 (批次 40/50)
+已处理 1632 个样本 (批次 50/50)
+
+测试完成。平均相关系数: 0.8560
+wandb: Currently logged in as: electrixoul (electrixoul-tsinghua-university). Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.19.11 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.16.6
+wandb: Run data is saved locally in /home/t/workspace/lab_work/sae_demo/wandb/run-20250521_162836-v5kaqkae
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run images-sae-train-k128
+wandb: ⭐️ View project at https://wandb.ai/electrixoul-tsinghua-university/images-sae-training
+wandb: 🚀 View run at https://wandb.ai/electrixoul-tsinghua-university/images-sae-training/runs/v5kaqkae
+/home/t/workspace/lab_work/sae_demo/images_sae_trainer.py:23: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self.scalers = [torch.cuda.amp.GradScaler() for _ in self.base_model.encoders]
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:69: UserWarning: Glyph 21407 (\N{CJK UNIFIED IDEOGRAPH-539F}) missing from current font.
+  plt.tight_layout()
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:69: UserWarning: Glyph 22987 (\N{CJK UNIFIED IDEOGRAPH-59CB}) missing from current font.
+  plt.tight_layout()
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:69: UserWarning: Glyph 22270 (\N{CJK UNIFIED IDEOGRAPH-56FE}) missing from current font.
+  plt.tight_layout()
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:69: UserWarning: Glyph 20687 (\N{CJK UNIFIED IDEOGRAPH-50CF}) missing from current font.
+  plt.tight_layout()
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:69: UserWarning: Glyph 37325 (\N{CJK UNIFIED IDEOGRAPH-91CD}) missing from current font.
+  plt.tight_layout()
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:69: UserWarning: Glyph 26500 (\N{CJK UNIFIED IDEOGRAPH-6784}) missing from current font.
+  plt.tight_layout()
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:69: UserWarning: Glyph 30456 (\N{CJK UNIFIED IDEOGRAPH-76F8}) missing from current font.
+  plt.tight_layout()
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:69: UserWarning: Glyph 20851 (\N{CJK UNIFIED IDEOGRAPH-5173}) missing from current font.
+  plt.tight_layout()
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:69: UserWarning: Glyph 31995 (\N{CJK UNIFIED IDEOGRAPH-7CFB}) missing from current font.
+  plt.tight_layout()
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:69: UserWarning: Glyph 25968 (\N{CJK UNIFIED IDEOGRAPH-6570}) missing from current font.
+  plt.tight_layout()
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:69: UserWarning: Glyph 31232 (\N{CJK UNIFIED IDEOGRAPH-7A00}) missing from current font.
+  plt.tight_layout()
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:69: UserWarning: Glyph 30095 (\N{CJK UNIFIED IDEOGRAPH-758F}) missing from current font.
+  plt.tight_layout()
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:69: UserWarning: Glyph 28608 (\N{CJK UNIFIED IDEOGRAPH-6FC0}) missing from current font.
+  plt.tight_layout()
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:69: UserWarning: Glyph 27963 (\N{CJK UNIFIED IDEOGRAPH-6D3B}) missing from current font.
+  plt.tight_layout()
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:348: UserWarning: Glyph 21407 (\N{CJK UNIFIED IDEOGRAPH-539F}) missing from current font.
+  plt.savefig(local_path)
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:348: UserWarning: Glyph 22987 (\N{CJK UNIFIED IDEOGRAPH-59CB}) missing from current font.
+  plt.savefig(local_path)
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:348: UserWarning: Glyph 22270 (\N{CJK UNIFIED IDEOGRAPH-56FE}) missing from current font.
+  plt.savefig(local_path)
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:348: UserWarning: Glyph 20687 (\N{CJK UNIFIED IDEOGRAPH-50CF}) missing from current font.
+  plt.savefig(local_path)
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:348: UserWarning: Glyph 37325 (\N{CJK UNIFIED IDEOGRAPH-91CD}) missing from current font.
+  plt.savefig(local_path)
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:348: UserWarning: Glyph 26500 (\N{CJK UNIFIED IDEOGRAPH-6784}) missing from current font.
+  plt.savefig(local_path)
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:348: UserWarning: Glyph 30456 (\N{CJK UNIFIED IDEOGRAPH-76F8}) missing from current font.
+  plt.savefig(local_path)
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:348: UserWarning: Glyph 20851 (\N{CJK UNIFIED IDEOGRAPH-5173}) missing from current font.
+  plt.savefig(local_path)
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:348: UserWarning: Glyph 31995 (\N{CJK UNIFIED IDEOGRAPH-7CFB}) missing from current font.
+  plt.savefig(local_path)
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:348: UserWarning: Glyph 25968 (\N{CJK UNIFIED IDEOGRAPH-6570}) missing from current font.
+  plt.savefig(local_path)
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:348: UserWarning: Glyph 31232 (\N{CJK UNIFIED IDEOGRAPH-7A00}) missing from current font.
+  plt.savefig(local_path)
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:348: UserWarning: Glyph 30095 (\N{CJK UNIFIED IDEOGRAPH-758F}) missing from current font.
+  plt.savefig(local_path)
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:348: UserWarning: Glyph 28608 (\N{CJK UNIFIED IDEOGRAPH-6FC0}) missing from current font.
+  plt.savefig(local_path)
+/home/t/workspace/lab_work/sae_demo/images_sae_train.py:348: UserWarning: Glyph 27963 (\N{CJK UNIFIED IDEOGRAPH-6D3B}) missing from current font.
+  plt.savefig(local_path)
+Traceback (most recent call last):
+  File "/home/t/workspace/lab_work/sae_demo/images_sae_train.py", line 375, in <module>
+    main()
+  File "/home/t/workspace/lab_work/sae_demo/images_sae_train.py", line 353, in main
+    f"sae{sae_id}_reconstruction_{i}": wandb.Image(local_path)
+NameError: name 'wandb' is not defined
+Traceback (most recent call last):
+  File "/home/t/workspace/lab_work/sae_demo/images_sae_train.py", line 375, in <module>
+    main()
+  File "/home/t/workspace/lab_work/sae_demo/images_sae_train.py", line 353, in main
+    f"sae{sae_id}_reconstruction_{i}": wandb.Image(local_path)
+NameError: name 'wandb' is not defined
+wandb: - 0.003 MB of 0.003 MB uploadedwandb: \ 0.003 MB of 0.003 MB uploadedwandb: | 0.003 MB of 0.003 MB uploadedwandb: / 0.003 MB of 0.003 MB uploadedwandb: - 0.008 MB of 0.027 MB uploaded (0.002 MB deduped)wandb: \ 0.008 MB of 0.032 MB uploaded (0.002 MB deduped)wandb: | 0.032 MB of 0.032 MB uploaded (0.002 MB deduped)wandb: 
+wandb: Run history:
+wandb:            Consensus_loss ▁▇██████████████████████████████████████
+wandb:    Feature_activity_SAE_0 █▁▃▄▅▅▇▇▅▇▇█▆▆▆▆▆▅▆▅▅▅▄▄▅▅▄▄▅▄▄▃▃▃▃▃▃▃▄▃
+wandb:    Feature_activity_SAE_1 █▁▃▃▄▄▆▆▄▆▆▆▅▅▄▅▅▄▅▄▄▄▃▃▄▃▃▃▄▄▂▃▂▃▂▃▂▂▂▂
+wandb:    Feature_activity_SAE_2 █▁▃▄▅▅▇▇▅▆▆▇▆▅▅▅▆▅▅▄▅▅▄▄▄▄▄▄▄▄▃▃▃▃▃▃▃▃▃▃
+wandb: SAE_0_reconstruction_loss █▄▃▂▂▂▂▂▁▂▁▁▁▁▁▂▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: SAE_1_reconstruction_loss █▄▃▂▂▂▂▂▁▂▁▁▂▁▁▂▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: SAE_2_reconstruction_loss █▄▃▂▂▂▂▂▁▂▁▁▂▁▁▂▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                     epoch ▁▁▁▂▂▂▃▃▃▃▃▃▄▄▄▅▅▅▆▆▆▆▆▆▇▇▇█
+wandb:    test_correlation_sae_0 ▁▄▅▆▇▇▇███
+wandb:    test_correlation_sae_1 ▁▄▅▆▆▇███
+wandb:    test_correlation_sae_2 ▁▄▅▆▇▇███
+wandb: 
+wandb: Run summary:
+wandb:            Consensus_loss 0.00858
+wandb:    Feature_activity_SAE_0 100.35278
+wandb:    Feature_activity_SAE_1 95.74014
+wandb:    Feature_activity_SAE_2 103.08328
+wandb: SAE_0_reconstruction_loss 0.01538
+wandb: SAE_1_reconstruction_loss 0.01496
+wandb: SAE_2_reconstruction_loss 0.01506
+wandb:                     epoch 10
+wandb:    test_correlation_sae_0 0.85598
+wandb:    test_correlation_sae_1 0.85682
+wandb:    test_correlation_sae_2 0.85463
+wandb: 
+wandb: 🚀 View run images-sae-train-k128 at: https://wandb.ai/electrixoul-tsinghua-university/images-sae-training/runs/v5kaqkae
+wandb: ⭐️ View project at: https://wandb.ai/electrixoul-tsinghua-university/images-sae-training
+wandb: Synced 6 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250521_162836-v5kaqkae/logs
+
+
