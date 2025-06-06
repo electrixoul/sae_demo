@@ -7,6 +7,8 @@ data/MNIST/
 data/
 output_images_jpg_rename/
 output_images_jpg_rename.zip
+neural_activity_data_*/
+*.zip
 
 # 模型文件和目录
 *_models/
@@ -23,6 +25,11 @@ output_images_jpg_rename.zip
 # 权重与偏差日志
 wandb/
 
+# 可视化文件 (保留重要的结果图片)
+# 注意：重要的训练结果图片应该被保留
+# neural_sae_training_progress.png
+# neural_sae_reconstruction_comparison.png
+
 # Python缓存
 __pycache__/
 *.py[cod]
@@ -32,6 +39,15 @@ __pycache__/
 htmlcov/
 .tox/
 .nox/
+
+# 日志文件
+*.log
+*.out
+
+# 临时文件
+*.tmp
+*.temp
+*~
 
 # 环境和IDE文件
 .env
@@ -52,3 +68,17 @@ ENV/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# LaTeX临时文件
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.toc
+*.pdf
